@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+
+\definecolor{courseblue}{RGB}{0,0,255}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\newcounter{problem}
+\newenvironment{problem}{%
+    \refstepcounter{problem}%
+    \Needspace{7\baselineskip}%
+    \par\vspace{0.7em}%
+    \noindent\textcolor{courseblue}{\rule{\textwidth}{0.4pt}}%
+    \par\vspace{0.5em}%
+    \begin{list}{}{%
+        \setlength{\leftmargin}{2.3em}%
+        \setlength{\labelwidth}{1.8em}%
+        \setlength{\labelsep}{0.5em}%
+        \setlength{\topsep}{0pt}%
+        \setlength{\partopsep}{0pt}%
+    }%
+    \item[{[\theproblem]}]
+}{%
+    \end{list}
+    \par\vspace{0.5em}
+}
+
+\newenvironment{parts}{%
+    \begin{enumerate}[label={[\alph*]},leftmargin=2.2em,itemsep=0.65em,topsep=0.65em]
+}{%
+    \end{enumerate}
+}
+
+% Type each solution between \begin{answer} and \end{answer}.
+\newenvironment{answer}{%
+    \Needspace{4\baselineskip}%
+    \par\vspace{0.35em}
+    \noindent\textbf{Answer:}\par
+    \vspace{2.5em}
+}{%
+    \par\vspace{0.25em}
+}
+
+\begin{document}
+
+\begin{center}
+    {\color{courseblue}\Large\textbf{AMATH/PMATH 331: Applied Real Analysis}}
+    \hfill
+    {\color{courseblue}\Large\textbf{Fall 2026}}
+
+    \vspace{1.2em}
+    {\color{courseblue}\Large
+    Assignment 1 Submission; due Thursday, September 24, 2026}
+
+    \vspace{1.2em}
+    
+    \textbf{Name:} Vlad Paun
+    
+    \textbf{Student number:} 21291453
+\end{center}
+
+\begin{problem}
+Let $E \subseteq \mathbb{R}$ be nonempty. We say that $t \in \mathbb{R}$ is a
+\emph{lower bound} of $E$ if $t \leq x$ for all $x \in E$. We say that $E$ is
+\emph{bounded below} if there exists a lower bound of $E$. We say that
+$t \in \mathbb{R}$ is a \emph{greatest lower bound}, or \emph{infimum}, of $E$
+if it is a lower bound of $E$ and if $t \geq s$ for any lower bound $s$ of $E$.
+If $E$ has an infimum, it is denoted $\inf E$.
+
+\begin{parts}
+    \Needspace{8\baselineskip}\item Let $E$ be a nonempty subset of $\mathbb{R}$ which is bounded below.
+    Find a way to use the completeness axiom to prove that $\inf E$ exists.
+    \emph{Hint:} Consider the subset $-E = \{-x : x \in E\}$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{8\baselineskip}\item Let $\varnothing \neq A \subseteq B \subseteq \mathbb{R}$. Suppose
+    $B$ is bounded below (so $\inf B$ exists). Prove that $A$ is bounded below
+    (so $\inf A$ exists) and that $\inf A \geq \inf B$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{8\baselineskip}\item Let $A,B$ be nonempty subsets of $\mathbb{R}$, both bounded below
+    (so both $\inf A$ and $\inf B$ exist). Define
+    \[
+        A+B = \{a+b : a \in A,\ b \in B\}.
+    \]
+    Prove that $A+B$ is bounded below and that
+    $\inf(A+B)=\inf A+\inf B$.
+
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Let $x,y$ be two real numbers such that $y-x>1$. (In particular, $x<y$.)
+
+\begin{parts}
+    \Needspace{8\baselineskip}\item If $x$ is positive, prove that there exists an integer $k \in \mathbb{Z}$
+    such that $x<k<y$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{8\baselineskip}\item If $x$ is negative and $y$ is positive, prove that there exists an
+    integer $k \in \mathbb{Z}$ such that $x<k<y$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{8\baselineskip}\item If $y$ is negative, prove that there exists an integer $k \in \mathbb{Z}$
+    such that $x<k<y$.
+
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+The parts of this problem are \emph{not related}.
+
+\begin{parts}
+    \Needspace{8\baselineskip}\item Let $x \in \mathbb{R}$. Consider the set
+    $E=\{q \in \mathbb{Q}:q<x\}\subset \mathbb{Q}\subset \mathbb{R}$.
+    Show that $E$ is nonempty and bounded above, so $\sup E$ exists. Show also
+    that $\sup E=x$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{8\baselineskip}\item Let $x,y \in \mathbb{R}$ with $x<y$. Prove that there exists an
+    \emph{irrational} (not rational) number $z$ such that $x<z<y$.
+    \emph{Hint:} You may use the fact that $\sqrt{2}$ is irrational.
+
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Let $C>0$ be a fixed positive number.
+
+\begin{parts}
+    \Needspace{8\baselineskip}\item Let $x \geq 0$, and suppose that for any $\varepsilon>0$, we have
+    $x<C\varepsilon$. Show that for any $\eta>0$, we have $x<\eta$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{8\baselineskip}\item In the situation of part [a], show that we must have $x=0$.
+    \emph{Hint:} Find a way to use the Archimedean property.
+
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\end{document}
