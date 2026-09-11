@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 
 \usepackage[a4paper,margin=1in]{geometry}
-\usepackage{amsmath,amssymb}
+\usepackage{amsmath,amssymb,amsthm}
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{fancyhdr}
@@ -49,7 +49,6 @@
     \Needspace{4\baselineskip}%
     \par\vspace{0.35em}
     \noindent\textbf{Answer:}\par
-    \vspace{2.5em}
 }{%
     \par\vspace{0.25em}
 }
@@ -68,7 +67,7 @@
     \vspace{1.2em}
     
     \textbf{Name:} Vlad Paun
-    
+
     \textbf{Student number:} 21291453
 \end{center}
 
@@ -86,6 +85,37 @@ If $E$ has an infimum, it is denoted $\inf E$.
     \emph{Hint:} Consider the subset $-E = \{-x : x \in E\}$.
 
     \begin{answer}
+        \begin{proof}
+            Since $E$ is nonempty and bounded below, there exists
+            $\alpha \in \mathbb{R}$ such that
+            \[
+                \forall x \in E:\ \alpha \leq x
+            \]
+
+            Consequently, 
+            \[
+                \forall x \in E:\ -\alpha \geq -x
+            \].
+
+            Define
+            \[
+                -E=\{-x:x\in E\}.
+            \]
+            
+            Then, $-\alpha$ is an upper bound of $-E$.
+
+
+            By the completeness axiom, $\sup(-E)$ exists. Let
+            \[
+                \beta=\sup(-E).
+            \]
+
+            It follows that $\forall x \in -E:\ \beta \geq x$. And therefore, $\forall x \in E:\ -\beta \leq x$. So $-\beta$ is a lower bound of $E$.
+
+            Next, take any other lower bound of $E$, call it $s$. From the same logic as above, it follows that $-s$ is an upper bound of $-E$. Since $\beta$ is a supremum of $-E$, it follows that $\beta \leq -s$. 
+            
+            So, $-\beta \geq s$. Therefore, since $\beta$ is a lower bound of $E$ and is it is at least as large as any other lower bound, it follows that $-\beta = \inf E$ 
+        \end{proof}
     \end{answer}
 
     \Needspace{8\baselineskip}\item Let $\varnothing \neq A \subseteq B \subseteq \mathbb{R}$. Suppose
