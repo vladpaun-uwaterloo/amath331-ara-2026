@@ -151,6 +151,31 @@ If $E$ has an infimum, it is denoted $\inf E$.
     $\inf(A+B)=\inf A+\inf B$.
 
     \begin{answer}
+        \begin{proof}
+            \begin{align*}
+                \forall a\in A&:\ \inf A \leq a \\
+                \forall b\in B&:\ \inf B \leq b \\
+                \therefore \forall a\in A,b\in B&:\ \inf A + \inf B \leq a+b\\
+                \therefore \forall x\in A+B&:\ \inf A + \inf B \leq x
+            \end{align*}
+
+            So $\inf A + \inf B$ is a lower bound of $A+B$. Consequently, $\inf(A+B)$ exists.
+
+            Now, we know that
+            \begin{align*}
+                \forall \epsilon > 0&:\ \exists \alpha\in A:\ \inf A + \frac{\epsilon}{2}  > \alpha \\
+                \forall \epsilon > 0&:\ \exists \beta\in B:\ \inf B + \frac{\epsilon}{2}  > \beta \\
+            \end{align*}
+
+            Therefore,
+            \begin{align*}
+                \forall \epsilon > 0&:\ \exists \alpha\in A, \beta\in B:\ \inf A + \inf B + \epsilon  > \alpha + \beta \\
+            \end{align*}
+            This means that no number greater then $\inf A + \inf B$ can be a lower bound of $A+B$. Therefore, 
+            \[
+            \inf(A+B) = \inf A + \inf B
+            \]
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
