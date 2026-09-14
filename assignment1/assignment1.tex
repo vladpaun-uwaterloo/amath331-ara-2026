@@ -114,7 +114,7 @@ If $E$ has an infimum, it is denoted $\inf E$.
 
             Next, take any other lower bound of $E$, call it $s$. From the same logic as above, it follows that $-s$ is an upper bound of $-E$. Since $\beta$ is a supremum of $-E$, it follows that $\beta \leq -s$. 
             
-            So, $-\beta \geq s$. Therefore, since $\beta$ is a lower bound of $E$ and is it is at least as large as any other lower bound, it follows that $-\beta = \inf E$ 
+            So, $-\beta \geq s$. Therefore, since $-\beta$ is a lower bound of $E$ and it is at least as large as any other lower bound, it follows that $-\beta = \inf E$ 
         \end{proof}
     \end{answer}
 
@@ -123,6 +123,23 @@ If $E$ has an infimum, it is denoted $\inf E$.
     (so $\inf A$ exists) and that $\inf A \geq \inf B$.
 
     \begin{answer}
+        \begin{proof}
+            If $B$ is bounded below, then $\exists \alpha:\ \forall x \in B:\ \alpha \leq x$.
+
+            Since $A \subseteq B$, we know that $\forall y\in A:\ y\in B$.
+
+            Consequently,
+            \[
+            \forall y \in A: \alpha \leq y
+            \]
+
+            Therefore, $\alpha$ is a also a lower bound of $A$. And from $1[a]$, we can conclude that $\inf A$ also exists.
+            
+            Now, since $A$ is a subset of $B$ and $\inf B$ is a lower bound of $B$, then $\inf B$ must also be a lower bound of $A$. Since $\inf A$ must be greater then or equal to any other lower bounds of $A$, we have that
+            \[
+            \inf A \geq \inf B
+            \]
+        \end{proof}
     \end{answer}
 
     \Needspace{8\baselineskip}\item Let $A,B$ be nonempty subsets of $\mathbb{R}$, both bounded below
