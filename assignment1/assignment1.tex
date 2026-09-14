@@ -290,12 +290,31 @@ Let $C>0$ be a fixed positive number.
     $x<C\varepsilon$. Show that for any $\eta>0$, we have $x<\eta$.
 
     \begin{answer}
+        \begin{proof}
+            Let $\eta > 0$ and choose
+            \[
+                \varepsilon = \frac{\eta}{C}
+            \]
+            Then we know that $x < C\varepsilon = C\frac{\eta}{C}$. Therefore, $x < \eta$
+        \end{proof}
     \end{answer}
 
     \Needspace{8\baselineskip}\item In the situation of part [a], show that we must have $x=0$.
     \emph{Hint:} Find a way to use the Archimedean property.
 
     \begin{answer}
+        \begin{proof}
+            Suppose for the sake of contradiction that $x > 0$.
+            
+            By the Archimedean property, we get that 
+            \[
+                \exists n \in \mathbb{N}:\ n > \frac{1}{x}
+            \]
+            Therefore, $x > \frac{1}{n}$.
+            But we can take $\eta = \frac{1}{n} > 0$ in $4[a]$ and get that $x < \frac{1}{n}$.
+            This is a contradiction, so our assumption must be wrong.
+            Therefore, $x = 0$.
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
