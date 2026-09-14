@@ -240,6 +240,26 @@ The parts of this problem are \emph{not related}.
     that $\sup E=x$.
 
     \begin{answer}
+        \begin{proof}
+            
+            Applying the Archimedean property to $-x$ we get that $\exists n \in \mathbb{N}:\ n > -x$. So, $x > -n$. Therefore, $-n\in E$, so $E$ is non-empty.
+
+            Also, since $x$ is strictly larger than any element of $E$, $x$ is a lower bound of $E$.
+
+            Since $E$ is bounded above and non-empty, $\sup E$ exists. 
+
+            Let $\sup E = \alpha$. We know that $\alpha \leq x$. Now, assume for the sake of contradiction, that $\alpha < x$.
+            
+            One of the propositions proved in class showed that between any two distinct real numbers, there exists a rational number. That is:
+            \[
+                \exists q\in\mathbb{Q}:\ \alpha < q < x
+            \]
+
+            But if $q$ is rational and smaller then $x$, then it should be a part of $E$. But this contradicts $\alpha$ being an infimum of $E$. Therefore, our assumption must be false and
+            \[
+                \sup E = x
+            \]
+        \end{proof}
     \end{answer}
 
     \Needspace{8\baselineskip}\item Let $x,y \in \mathbb{R}$ with $x<y$. Prove that there exists an
@@ -247,6 +267,17 @@ The parts of this problem are \emph{not related}.
     \emph{Hint:} You may use the fact that $\sqrt{2}$ is irrational.
 
     \begin{answer}
+        \begin{proof}
+            We will take the interval $(x,y)$ and shift it by $\sqrt{2}$.
+            \[
+                x-\sqrt{2} < y-\sqrt{2}
+            \]
+            By the proposition shown in class, we know that 
+            \[
+                \exists q\in\mathbb{Q}:\ x-\sqrt{2} < q < y-\sqrt{2}
+            \]
+            Therefore, $x < q + \sqrt{2} < y$. Since we know that $\sqrt{2}$ is irrational, then $z=q+\sqrt{2}$ is also irrational.
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
