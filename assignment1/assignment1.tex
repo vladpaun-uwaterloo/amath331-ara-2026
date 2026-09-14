@@ -163,13 +163,13 @@ If $E$ has an infimum, it is denoted $\inf E$.
 
             Now, we know that
             \begin{align*}
-                \forall \epsilon > 0&:\ \exists \alpha\in A:\ \inf A + \frac{\epsilon}{2}  > \alpha \\
-                \forall \epsilon > 0&:\ \exists \beta\in B:\ \inf B + \frac{\epsilon}{2}  > \beta \\
+                \forall \varepsilon > 0&:\ \exists \alpha\in A:\ \inf A + \frac{\varepsilon}{2}  > \alpha \\
+                \forall \varepsilon > 0&:\ \exists \beta\in B:\ \inf B + \frac{\varepsilon}{2}  > \beta \\
             \end{align*}
 
             Therefore,
             \begin{align*}
-                \forall \epsilon > 0&:\ \exists \alpha\in A, \beta\in B:\ \inf A + \inf B + \epsilon  > \alpha + \beta \\
+                \forall \varepsilon > 0&:\ \exists \alpha\in A, \beta\in B:\ \inf A + \inf B + \varepsilon  > \alpha + \beta \\
             \end{align*}
             This means that no number greater then $\inf A + \inf B$ can be a lower bound of $A+B$. Therefore, 
             \[
@@ -188,6 +188,25 @@ Let $x,y$ be two real numbers such that $y-x>1$. (In particular, $x<y$.)
     such that $x<k<y$.
 
     \begin{answer}
+        \begin{proof}
+            Consider the non-empty (do I gotta prove this?) set $E = \{z \in \mathbb{Z}:\ z > x\}$. $x$ is a lower bound of this set, so by the completeness axiom we know that $\inf E$ also exists.\\
+            Let $\alpha = \inf E$ and take $\varepsilon=1>0$.
+            By the defining property of the infinum we know that $\exists s\in E:\ \alpha + 1 > s \geq \alpha$. 
+            
+            Suppose $s\neq\alpha$. Then $s>\alpha$, so, applying the defining property of the infimum with $\varepsilon=s-\alpha>0$, there exists
+            $t\in E$ such that
+            \[
+                \alpha\leq t<s<\alpha+1.
+            \]
+            
+            So $1 > s-t > 0$. But $s$ and $t$ are both integers, which leads to a contradiciton.
+
+            Therefore, $s=\alpha=\inf E = min(E) \in E \subset \mathbb{Z}$. And $x < \alpha$
+
+            Now, consider for the sake of contradiction that  $\alpha > x+1$. Since $\alpha \in \mathbb{Z}$, we also have that $\alpha-1\in \mathbb{Z}$ and since $\alpha-1 > x$, we must have $\alpha-1 \in E$. But we also have that $\alpha=min(E)$, which is a contradiction.
+
+            Therefore, $x < \alpha \leq x+1$. Since $y-x > 1$ it also holds that $x < \alpha < y$. So $k = \alpha$ is the integer we were looking for.
+        \end{proof}
     \end{answer}
 
     \Needspace{8\baselineskip}\item If $x$ is negative and $y$ is positive, prove that there exists an
