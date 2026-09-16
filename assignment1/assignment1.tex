@@ -6,6 +6,7 @@
 \usepackage{xcolor}
 \usepackage{fancyhdr}
 \usepackage{needspace}
+\usepackage{physics}
 
 \definecolor{courseblue}{RGB}{0,0,255}
 
@@ -17,6 +18,8 @@
 \fancyhf{}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
+
+\renewcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
 
 \newcounter{problem}
 \newenvironment{problem}{%
@@ -339,6 +342,60 @@ some $t<0$, and that the second inequality becomes an equality if and only if
 $y=tx$ for some $t>0$.
 
 \begin{answer}
+    \begin{proof}
+        Let $u=\frac{x}{\lVert x\rVert}$ and $v=\frac{y}{\lVert y\rVert}$.
+
+        We will first prove 
+        \[
+            y = tx \text{ for some } t>0 \iff \ip{x}{y}= \norm{x}\norm{y}
+        \]
+        
+        First, suppose $y = tx \text{ for some } t>0$. We have to prove that $\ip{x}{y} = \norm{x}\norm{y}$.
+        \begin{align*}
+            & \ip{x}{y} = \ip{x}{tx} = t\ip{x}{x} = t\norm{x}^2 \\
+            & \norm{y} = \norm{tx} = t\norm{x}\\
+            & \therefore \ip{x}{y} = \norm{x}\norm{y}
+        \end{align*}
+
+        Secondly, suppose $\ip{x}{y} = \norm{x}\norm{y}$. We have to prove that $y = tx \text{ for some } t>0$.
+        
+        Let us now look at $\ip{u}{v}$
+        \[
+            \ip{u}{v} = \ip{\frac{x}{\norm{x}}}{\frac{y}{\norm{y}}} = \frac{\ip{x}{y}}{\norm{x}\norm{y}} = 1
+        \]
+        Let $z = u - v$.
+        \begin{align*}
+            &\norm{z}^2 = \ip{z}{z} = \ip{u-v}{u-v} = \ip{u}{u} -2\ip{u}{v} + \ip{v}{v}\\
+            &\norm{z}^2 = \norm{u}^2 + \norm{v}^2 - 2\\
+            && \norm{u} = \norm{\frac{x}{\norm{x}}} = \frac{\norm{x}}{\norm{x}} = 1\\
+            && \norm{v} = \norm{\frac{y}{\norm{y}}} = \frac{\norm{y}}{\norm{y}} = 1\\
+            &\norm{z}^2 = 2-2=0\\
+            &\norm{z} = 0\\
+            &z = u-v = 0\\
+            &u=v\\
+            &\frac{x}{\norm{x}}=\frac{y}{\norm{y}}\\
+            &y = x\frac{\norm{y}}{\norm{x}} &\norm{y} > 0,\quad\norm{x} > 0\\
+            &\therefore y = tx &\text{For } t = \frac{\norm{y}}{\norm{x}} > 0
+        \end{align*}
+        This concludes the proof that $y = tx \text{ for some } t>0 \iff \ip{x}{y}= \norm{x}\norm{y}$
+        
+        Now we have to prove
+        \[
+            y = tx \text{ for some } t<0 \iff \ip{x}{y}= -\norm{x}\norm{y}
+        \]
+        Consider the vector $x' = -x$ and apply the proof above to show that
+        \[
+            y = t'x' \text{ for some } t'>0 \iff \ip{x'}{y}= \norm{x'}\norm{y}
+        \]
+        Now,
+        \begin{align*}
+            &y = t'(-x) \text{ for some } t'>0 \iff \ip{(-x)}{y}= \norm{(-x)}\norm{y}\\
+            &y = (-t')x \text{ for some } t'>0 \iff -\ip{x}{y}= \norm{x}\norm{y} & \norm{x} = \norm{-x}\\
+            &y = (-t')x \text{ for some } t'>0 \iff \ip{x}{y}= -\norm{x}\norm{y}\\
+            &\text{Take }t = -t' < 0\\
+            &y = tx \text{ for some } t<0 \iff \ip{x}{y}= -\norm{x}\norm{y}\\
+        \end{align*}
+    \end{proof}
 \end{answer}
 \end{problem}
 
