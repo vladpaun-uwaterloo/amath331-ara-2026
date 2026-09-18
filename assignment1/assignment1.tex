@@ -503,14 +503,42 @@ by Cauchy--Schwarz.
 \end{problem}
 
 \begin{problem}
-COMING SOON
+Let $C \subset R^n$ be a non-empty proper closed subset of $R^n$. $Let x \in R^n \ C$, which exists because $C$ is a proper subset. Define the subset $E \subset R$ by
+\[
+    E = \{r > 0:\ B_r(x) \cap C = \emptyset\}.
+\]
 
-\begin{answer}
-\end{answer}
+    \begin{parts}
+        \Needspace{8\baselineskip}\item Explain why $E \neq \emptyset$
+
+        \begin{answer}
+            
+        \end{answer}
+
+        \Needspace{8\baselineskip}\item Prove that there exists an upper bound for $E$.
+        
+        \begin{answer}
+            
+        \end{answer}
+
+        \Needspace{8\baselineskip}\item Thus, by the completeness axiom, $\sup E$ exists. Show that $\sup E \leq \norm{x-y} \text{ for all } y \in C$
+        
+        \begin{answer}
+            
+        \end{answer}
+
+     \end{parts}
 \end{problem}
 
 \begin{problem}
-COMING SOON
+Let $(x_k)_{k\in \mathbb{N}}$ be a sequence in $R^n$, and suppose that there exists $r \in (0, 1)$ and $C > 0$ such that
+\[
+    \norm{x_{k+1} - x_k} \leq Cr^k
+\]    
+Prove that $(x_k)$ is Cauchy.
+
+\emph{Hint:} Recall that $r^{k+m-1} + r^{k+m-2} + \dots + r^k = r^k(r^{m-1} + r^{m-2} + \dots + 1) = r^k\frac{1-r^m}{1-r}$.\\
+You may also use without proof the fact (which is easy to show using the Archimedean Property) that: since $r \in (0, 1)$, given any $\delta > 0$, there exists $N \in \mathbb{N}$ such that $k \geq \mathbb{N}$ implies $r^k < \delta$.
 
 \begin{answer}
 \end{answer}
