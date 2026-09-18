@@ -409,6 +409,27 @@ Let
 be a closed ball. Prove that $E$ is \emph{not open}.
 
 \begin{answer}
+    \begin{proof}
+        We have to prove that $\exists x\in E:\ \forall\delta>0:\ B_\delta(x)\not\subseteq E$.\\
+        Equivalently: $\exists x \in E:\ \forall\delta>0: \exists y \notin E:\ \norm{y - x} < \delta$.
+
+        Take any $x$ such that $\norm{x - x_0} = r$. Then, for any $\delta > 0$ construct the vector:
+        \[
+            y = x + \frac{\delta}{2r}(x - x_0)
+        \]
+        \begin{align*}
+            &\norm{y-x_0} = \norm{x + \frac{\delta}{2r}(x - x_0) - x_0} = \norm{(x-x_0)(1+\frac{\delta}{2r})}\\
+            &\norm{y-x_0} = (1 + \frac{\delta}{2r})\norm{x-x_0} = (1 + \frac{\delta}{2r})r = r + \frac{\delta}{2}\\
+            &\norm{y-x_0} = r + \frac{\delta}{2} > r
+        \end{align*}
+        Therefore, $y\notin E$.
+        \begin{align*}
+            &\norm{y-x} = \norm{x + \frac{\delta}{2r}(x - x_0) - x} = \norm{\frac{\delta}{2r}(x - x_0)}\\
+            &\norm{y-x} = \frac{\delta\norm{x-x_0}}{2r} = \frac{\delta r}{2r} = \frac{\delta}{2}\\
+            &\therefore \norm{y-x} = \frac{\delta}{2} < \delta
+        \end{align*}
+        Thus, we have proved that $\exists x \in E:\ \forall\delta>0: \exists y \notin E:\ \norm{y - x} < \delta$, which is equivalent to saying E is not open.
+    \end{proof}
 \end{answer}
 \end{problem}
 
