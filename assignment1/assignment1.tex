@@ -479,6 +479,26 @@ Prove that $E$ is open. \emph{Hint:} Observe that
 by Cauchy--Schwarz.
 
 \begin{answer}
+    \begin{proof}
+        Take arbitrary $y\in E$. Set
+        \[
+            \delta = \frac{c-\ip{y}{a}}{\norm{a}}.
+        \]
+        Since $\ip{y}{a}<c$ and $\norm{a}>0$, we have $\delta>0$.
+
+        Let $z\in B_\delta(y)$. Then $\norm{z-y}<\delta$, so
+        by Cauchy--Schwarz,
+        \begin{align*}
+            \ip{z}{a}
+            &= \ip{y}{a} + \ip{z-y}{a}\\
+            &\leq \ip{y}{a} + \abs{\ip{z-y}{a}}\\
+            &\leq \ip{y}{a} + \norm{z-y}\norm{a}\\
+            &< \ip{y}{a} + \delta\norm{a}\\
+            &= c.
+        \end{align*}
+        Thus $z\in E$, and hence $B_\delta(y)\subseteq E$.
+        Since $y\in E$ was arbitrary, $E$ is open.
+    \end{proof}
 \end{answer}
 \end{problem}
 
