@@ -438,6 +438,29 @@ Let $F=\{x_1,\ldots,x_N\}$ be a finite subset of $\mathbb{R}^n$. Prove that
 $F$ is \emph{closed}.
 
 \begin{answer}
+    \begin{proof}
+        We have to prove that $\forall x \in F^c:\ \exists\delta > 0:\ B_\delta(x) \subseteq F^c$.
+
+        Let $y\in F^c$. So $\forall x_i \in F:\ y \neq x_i$. Therefore, $\forall x_i \in F:\ \norm{y - x_i} > 0$
+
+        Since $F$ is a finite set, the set $M=\{\norm{y - x_i}:\ i\in[N]\}$ is also finite, so $min(M)$ exists.
+
+        Take $\delta = min(M) = min(\norm{y-x_i}) > 0$.
+
+        Let $z\in B_\delta(y) \implies \norm{z-y} < \delta$.
+
+        By the triangle inequality: $\forall x_i\in F:\ \norm{z - x_i} \geq \norm{y - x_i} - \norm{y - z}$.
+
+        Now, since $\delta = min(\norm{y-x_i})$, we know that $\forall x_i\in F:\ \delta \leq \norm{y-x_i}$
+
+        So, the inequality becomes: $\forall x_i\in F:\ \norm{z - x_i} \geq \delta - \norm{y - z}$.
+
+        But we know that $\norm{y-z} < \delta$. Therefore, $\forall x_i\in F:\ \norm{z-x_i} > 0$.
+
+        So, $\forall x_i\in F:\ z \neq x_i \implies z\in F^c \implies B_\delta(y)\subseteq F^c$.
+        
+        Therefore $F^c$ is open $\implies F$ is closed.
+    \end{proof}
 \end{answer}
 \end{problem}
 
