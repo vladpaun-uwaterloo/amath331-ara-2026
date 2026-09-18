@@ -348,11 +348,17 @@ Show that:
 
 \begin{answer}
     \begin{proof}
-        Let $u=\frac{x}{\lVert x\rVert}$ and $v=\frac{y}{\lVert y\rVert}$.
+        Let $u=\frac{x}{\lVert x\rVert}$, $v=\frac{y}{\lVert y\rVert}$ and $z = u\pm v$.
+        \begin{align*}
+            &\norm{u}=\norm{\frac{x}{\norm{x}}}=\frac{\norm{x}}{\norm{x}}=1 \quad
+            \norm{v}=\norm{\frac{y}{\norm{y}}}=\frac{\norm{y}}{\norm{y}}=1\\
+            &\norm{z}^2 = \norm{u \pm v}^2 = \ip{u \pm v}{u\pm v} = \norm{u}^2 + \norm{v}^2 \pm 2\ip{u}{v} = 2 \pm 2\ip{u}{v} \\
+            &\norm{z}^2 = 2(1 \pm\ip{u}{v}) \geq 0 \implies -1 \leq \ip{u}{v} \leq 1\\
+            &\ip{u}{v} = \ip{\frac{x}{\norm{x}}}{\frac{y}{\norm{y}}} = \frac{\ip{x}{y}}{\norm{x}\norm{y}}\\
+            &\therefore -1 \leq \frac{\ip{x}{y}}{\norm{x}\norm{y}} \leq 1 \implies -\norm{x}\norm{y} \leq\ip{x}{y}\leq \norm{x}\norm{y}
+        \end{align*}
 
-        \emph{Gotta add the proof for the inequalities here}
-
-        We will first prove 
+        Next, for the equality conditions, we will first prove 
         \[
             y = tx \text{ for some } t>0 \iff \ip{x}{y}= \norm{x}\norm{y}
         \]
@@ -364,24 +370,12 @@ Show that:
             & \therefore \ip{x}{y} = \norm{x}\norm{y}
         \end{align*}
 
-        Secondly, suppose $\ip{x}{y} = \norm{x}\norm{y}$. We have to prove that $y = tx \text{ for some } t>0$.
-        
-        Let us now look at $\ip{u}{v}$
-        \[
-            \ip{u}{v} = \ip{\frac{x}{\norm{x}}}{\frac{y}{\norm{y}}} = \frac{\ip{x}{y}}{\norm{x}\norm{y}} = 1
-        \]
+        Secondly, suppose $\ip{x}{y} = \norm{x}\norm{y}$. We have to prove that $y = tx \text{ for some } t>0$.\\
+        Since $\ip{x}{y} = \norm{x}\norm{y}$, we have that $\ip{u}{v} = \frac{\ip{x}{y}}{\norm{x}\norm{y}} = 1$. 
         Let $z = u - v$.
         \begin{align*}
-            &\norm{z}^2 = \ip{z}{z} = \ip{u-v}{u-v} = \ip{u}{u} -2\ip{u}{v} + \ip{v}{v}\\
-            &\norm{z}^2 = \norm{u}^2 + \norm{v}^2 - 2\\
-            && \norm{u} = \norm{\frac{x}{\norm{x}}} = \frac{\norm{x}}{\norm{x}} = 1\\
-            && \norm{v} = \norm{\frac{y}{\norm{y}}} = \frac{\norm{y}}{\norm{y}} = 1\\
-            &\norm{z}^2 = 2-2=0\\
-            &\norm{z} = 0\\
-            &z = u-v = 0\\
-            &u=v\\
-            &\frac{x}{\norm{x}}=\frac{y}{\norm{y}}\\
-            &y = x\frac{\norm{y}}{\norm{x}} &\norm{y} > 0,\quad\norm{x} > 0\\
+            &\norm{z}^2 = 2-2\ip{u}{v} = 0\implies u=v\\
+            &\frac{x}{\norm{x}}=\frac{y}{\norm{y}}\implies y = x\frac{\norm{y}}{\norm{x}} &\norm{y} > 0,\quad\norm{x} > 0\\
             &\therefore y = tx &\text{For } t = \frac{\norm{y}}{\norm{x}} > 0
         \end{align*}
         This concludes the proof that $y = tx \text{ for some } t>0 \iff \ip{x}{y}= \norm{x}\norm{y}$
@@ -396,7 +390,7 @@ Show that:
         \]
         Now,
         \begin{align*}
-            &y = t'(-x) \text{ for some } t'>0 \iff \ip{(-x)}{y}= \norm{(-x)}\norm{y}\\
+            &y = t'(-x) \text{ for some } t'>0 \iff \ip{-x}{y}= \norm{-x}\norm{y}\\
             &y = (-t')x \text{ for some } t'>0 \iff -\ip{x}{y}= \norm{x}\norm{y} & \norm{x} = \norm{-x}\\
             &y = (-t')x \text{ for some } t'>0 \iff \ip{x}{y}= -\norm{x}\norm{y}\\
             &\text{Take }t = -t' < 0\\
