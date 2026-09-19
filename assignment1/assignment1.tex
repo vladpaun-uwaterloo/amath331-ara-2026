@@ -512,22 +512,42 @@ Let $C \subset \mathbb{R}^n$ be a non-empty proper \emph{closed} subset of $\mat
         \Needspace{8\baselineskip}\item Explain why $E \neq \emptyset$
 
         \begin{answer}
-            
+            \begin{proof}
+                Since $C$ is a closed subset of $\mathbb{R}^n$, we have that $C^c = \mathbb{R}^n\setminus C$ is an open subset of $\mathbb{R}^n$. By definition, this means that $\forall x\in C^c:\ \exists r > 0:\ B_r(x)\subseteq C^c$.
+
+                Which is equivalent to saying $\forall x \in \mathbb{R}^n\setminus C:\ \exists r > 0:\ B_r(x)\cap C = \emptyset$.
+
+                Since the given $x\in C^c$, there exists $r>0$ such that $B_r(x)\cap C=\emptyset$. Hence $r\in E$, so $E\neq\emptyset$.
+            \end{proof}
         \end{answer}
 
         \Needspace{8\baselineskip}\item Prove that there exists an upper bound for $E$.
         
         \begin{answer}
-            
+            \begin{proof}
+                $C$ is non-empty, so consider arbitrary $y\in C$ and look at the distance $\norm{x-y}$.
+
+                Assume, for the sake of contradiction, that $\exists r \in E:\ r > \norm{x-y}$. This would mean that $y\in B_r(x)$. And this implies that $y\in B_r(x)\cap C$, which is a contradiction.
+
+                Therefore, $\forall r\in E:\ \norm{x-y} \geq r \implies \norm{x-y}$ is an upper bound of $E$.
+            \end{proof}
         \end{answer}
 
         \Needspace{8\baselineskip}\item Thus, by the completeness axiom, $\sup E$ exists.
-        \\Show that $\sup E \leq \norm{x-y} \text{ for all } y \in C$
+        \\Show that $\sup E \leq \norm{x-y} \text{ for all } y \in C$.
         
         \begin{answer}
-            
-        \end{answer}
+            \begin{proof}
+                In part [b] we proved that $\norm{x-y}$ is an upper bound of $E$ for an arbitrary $y$ and so it must hold for all $y\in C$.
 
+                Therefore, $\norm{x-y}$ is an upper bound of $E$ for all $y \in C$.
+
+                And by the definition of the supremum, $\sup E$ is less than or equal to all other upper bounds, so
+                \[
+                    \sup E \leq \norm{x-y} \text{ for all } y\in C
+                \]
+            \end{proof}
+        \end{answer}
      \end{parts}
 \end{problem}
 
