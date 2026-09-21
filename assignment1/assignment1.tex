@@ -559,9 +559,36 @@ Let $(x_k)_{k\in \mathbb{N}}$ be a sequence in $\mathbb{R}^n$, and suppose that 
 Prove that $(x_k)$ is Cauchy.
 
 \emph{Hint:} Recall that $r^{k+m-1} + r^{k+m-2} + \dots + r^k = r^k(r^{m-1} + r^{m-2} + \dots + 1) = r^k\frac{1-r^m}{1-r}$.\\
-You may also use without proof the fact (which is easy to show using the Archimedean Property) that: since $r \in (0, 1)$, given any $\delta > 0$, there exists $N \in \mathbb{N}$ such that $k \geq \mathbb{N}$ implies $r^k < \delta$.
+You may also use without proof the fact (which is easy to show using the Archimedean Property) that: since $r \in (0, 1)$, given any $\delta > 0$, there exists $N \in \mathbb{N}$ such that $k \geq N$ implies $r^k < \delta$.
 
 \begin{answer}
+    \begin{proof}
+        Let arbitrary $\varepsilon > 0$. Let $\delta = \varepsilon\frac{1-r}{C}$. Since $0 < 1-r < 1$ and $C>0$,  $\delta > 0$. From the hint above, we have that $\exists N\in \mathbb{N}:\ k \geq N \implies r^k < \delta$.
+
+        Therefore, $r^k < \varepsilon\frac{1-r}{C}$ for all $k \geq N$.
+
+
+        Now, take arbitrary $k,l \geq N$. Without loss of generality, assume $l \geq k$. Then, $l = k + m$ for some $m \geq 0$.
+        \begin{align*}
+            x_{k+m} - x_k &= x_{k+m} - x_{k+m-1} + x_{k+m-1} - \dots - x_{k+1} + x_{k+1} - x_k\\
+            \norm{x_{k+m} - x_k} &= \norm{(x_{k+m} - x_{k+m-1}) + \dots + (x_{k+1} - x_k)}\\
+            &\leq\norm{x_{k+m} - x_{k+m-1}} + \dots + \norm{x_{k+1} - x_k}  \\ 
+            & \text{(By the triangle inequality)}
+        \end{align*}
+        Now, we know that $\exists r \in (0,1): \exists C>0:\ \norm{x_{k+1} - x_k} \leq Cr^k$ and we can apply this to every norm in the sum above.
+        \begin{align*}
+            \norm{x_{k+m} - x_k} &\leq Cr^{k+m-1} + Cr^{k+m-2} + \dots Cr^{k}\\
+            &\leq C(r^{k+m-1} + r^{k+m-2} + \dots r^{k})\\
+            &\leq Cr^k\frac{1-r^m}{1-r}\\
+            && 0 < r < 1 \implies 0 < r^m \leq 1\\ && 0 \leq1 - r^m < 1\\
+            &< r^k\frac{C}{1-r} = \varepsilon\frac{1-r}{C}\frac{C}{1-r} = \varepsilon
+        \end{align*}
+        Since $\varepsilon,k,l$ were arbitrary, it holds that:
+        \[
+            \forall \varepsilon > 0:\ \exists N\in \mathbb{N}:\ k,l \geq N \implies \norm{x_l - x_k} < \varepsilon
+        \]
+        Therefore, $(x_k)_{k\in\mathbb{N}}$ is Cauchy.
+    \end{proof}
 \end{answer}
 \end{problem}
 
