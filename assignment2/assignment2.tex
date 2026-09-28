@@ -21,6 +21,9 @@
 
 \renewcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
 
+\usepackage{bm}
+\renewcommand{\vec}[1]{\bm{#1}} % Converts all \vec{} commands to bold
+
 \newcounter{problem}
 \newenvironment{problem}{%
     \refstepcounter{problem}%
@@ -86,6 +89,30 @@ is a sequence in $\mathbb{R}$ for each $j=1,\ldots,n$.
     (\emph{Don't forget to prove both directions!})
 
     \begin{answer}
+        \begin{proof}
+            Suppose $\lim_{k\to\infty}x_k = \vec{a}$. So $\forall\varepsilon > 0:\ \exists N\in\mathbb{N}:\ \forall k\geq N:\ \norm{x_k - \vec{a}} < \varepsilon$.
+
+            Let $\varepsilon > 0$.
+            \begin{align*}
+                & (x_{kj} - a_j)^2 \geq 0 & \forall j\in[n]\\
+                &(x_{kj} - a_j)^2 \leq \sum_{i = 1}^{n}(x_{ki}-a_i)^2 & \forall j\in[n]\\
+                &\abs{x_{kj} - a_j} \leq \sqrt{\sum_{i = 1}^{n}(x_{ki}-a_i)^2} = \norm{x_k-\vec{a}} < \varepsilon & \forall j\in[n],\forall k\geq N\\
+                & \abs{x_{kj} - a_j} < \varepsilon & \forall j\in[n],\forall k\geq N\\
+                & \therefore \lim_{k\to\infty}x_{kj} = a_j & \forall j\in[n]
+            \end{align*}
+
+            Suppose $\forall j\in[n]:\ \lim_{k\to\infty}x_{kj} = a_j$. So $\forall j\in[n]:\ \forall\varepsilon > 0:\ \exists N_j\in\mathbb{N}:\ \forall k\geq N_j:\ \abs{x_{kj} - a_j} < \varepsilon$.
+            
+            Let $\varepsilon' = \frac{\varepsilon}{\sqrt{n}} > 0$. Since $n$ is finite, take $N = \max\{N_j\}$. Then, it holds that:
+
+            \begin{align*}
+                 & \abs{x_{kj} - a_j} < \frac{\varepsilon}{\sqrt{n}} & \forall k\geq N,\forall j\in[n]\\
+                 & \abs{x_{kj} - a_j}^2 < \frac{\varepsilon^2}{n} & \forall k\geq N,\forall j\in[n]\\
+                 & \sum_{j = 1}^{n}(x_{kj} - a_j)^2 < \varepsilon^2 & \forall k\geq N\\
+                 & \norm{x_k - \vec{a}} = \sqrt{\sum_{j = 1}^{n}(x_{kj} - a_j)^2} < \varepsilon & \forall k\geq N\\
+                 & \therefore \lim_{k\to\infty}x_k = \vec{a}
+            \end{align*}
+        \end{proof}
     \end{answer}
 
     \Needspace{8\baselineskip}\item Prove that $(\mathbf{x}_k)_{k\in\mathbb{N}}$
@@ -94,6 +121,30 @@ is a sequence in $\mathbb{R}$ for each $j=1,\ldots,n$.
     $j=1,\ldots,n$. (\emph{Don't forget to prove both directions!})
 
     \begin{answer}
+        \begin{proof}
+            Suppose $(x_k)_{k\in\mathbb{N}}$ is Cauchy. So $\forall\varepsilon > 0:\ \exists N\in\mathbb{N}:\ \forall k,l\geq N:\ \norm{x_k - x_l} < \varepsilon$.
+
+            Let $\varepsilon > 0$.
+            \begin{align*}
+                & (x_{kj} - x_{lj})^2 \geq 0 & \forall j\in[n]\\
+                &(x_{kj} - x_{lj})^2 \leq \sum_{i = 1}^{n}(x_{ki}-x_{li})^2 & \forall j\in[n]\\
+                &\abs{x_{kj} - x_{lj}} \leq \sqrt{\sum_{i = 1}^{n}(x_{ki}-x_{li})^2} = \norm{x_k-x_l} < \varepsilon & \forall j\in[n],\forall k,l\geq N\\
+                & \abs{x_{kj} - x_{lj}} < \varepsilon & \forall j\in[n],\forall k,l\geq N\\
+                & \therefore (x_{kj})_{k\in\mathbb{N}} \text{ is Cauchy} & \forall j\in[n]
+            \end{align*}
+
+            Suppose $\forall j\in[n]:\ (x_{kj})_{k\in\mathbb{N}}$ is Cauchy. So $\forall j\in[n]:\ \forall\varepsilon > 0:\ \exists N_j\in\mathbb{N}:\ \forall k,l\geq N_j:\ \abs{x_{kj} - x_{lj}} < \varepsilon$.
+            
+            Let $\varepsilon' = \frac{\varepsilon}{\sqrt{n}} > 0$. Since $n$ is finite, take $N = \max\{N_j\}$. Then, it holds that:
+
+            \begin{align*}
+                 & \abs{x_{kj} - x_{lj}} < \frac{\varepsilon}{\sqrt{n}} & \forall k,l\geq N,\forall j\in[n]\\
+                 & \abs{x_{kj} - x_{lj}}^2 < \frac{\varepsilon^2}{n} & \forall k,l\geq N,\forall j\in[n]\\
+                 & \sum_{j = 1}^{n}(x_{kj} - x_{lj})^2 < \varepsilon^2 & \forall k,l\geq N\\
+                 & \norm{x_k - x_l} = \sqrt{\sum_{j = 1}^{n}(x_{kj} - x_{lj})^2} < \varepsilon & \forall k,l\geq N\\
+                 & \therefore (x_k)_{k\in\mathbb{N}}\text{ is Cauchy}
+            \end{align*}
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
