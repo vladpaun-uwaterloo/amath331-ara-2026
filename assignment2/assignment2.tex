@@ -24,6 +24,8 @@
 \usepackage{bm}
 \renewcommand{\vec}[1]{\bm{#1}} % Converts all \vec{} commands to bold
 
+\DeclareMathOperator{\dist}{dist}
+
 \newcounter{problem}
 \newenvironment{problem}{%
     \refstepcounter{problem}%
@@ -159,6 +161,19 @@ The two parts of this problem \emph{are} related.
     $\lim_{k\to\infty}a_k=\inf E$.
 
     \begin{answer}
+        \begin{proof}
+            Let $b = \inf E$.
+        
+            From the definition of the infimum, we have that $\forall \varepsilon > 0:\ \exists a_k\in E:\ b \leq a_k < b + \varepsilon$.
+            Taking $\varepsilon = \frac{1}{k}$ for every $k$, we can construct the sequence $(a_k)$ with $a_k\in E$ such that $b \leq a_k < b + \frac{1}{k}$.
+            Since
+            \[
+                \lim_{k\to\infty}\frac{1}{k} = 0 \quad
+                \lim_{k\to\infty}b = b \quad
+                \lim_{k\to\infty}b+\frac{1}{k} = b
+            \]
+            The squeeze theorem gives $\lim_{k\to\infty}a_k=b$.
+        \end{proof}
     \end{answer}
 
     \Needspace{12\baselineskip}\item Let $A\subseteq\mathbb{R}^n$ be nonempty,
@@ -176,6 +191,19 @@ The two parts of this problem \emph{are} related.
     =\operatorname{dist}_A(\mathbf{x})$.
 
     \begin{answer}
+        \begin{proof}
+            Let $E = \{\norm{\vec{x} - \vec{y}}: \vec{y}\in A\}\subseteq \mathbb{R}$
+
+            First, lets show that $\inf E$ exists. Since $A$ is non-empty, then $E$ must also be non-empty. And since all the elements of $E$ are norms of vectors, which are always non-negative, $0$ is a lower bound of $E$. Therefore, $\inf E$ exists. We denote $\dist_A(\vec{x}) = \inf E$.
+
+            From [a] we get that there exists a sequence $(a_k)_{k\in\mathbb{N}}$ with $a_k\in E$ for all $k$ and $\lim_{k\to\infty}a_k = \dist_A(\vec{x})$.
+
+            $\forall k\in \mathbb{N}:$ choose $\vec{y}_k\in A$ such that $\norm{\vec{x} - \vec{y}_k} = a_k$, which must exist given our definition of $E$.
+
+            So $(\vec{y}_k)_{k\in\mathbb{N}}$ must be a valid sequence in $\mathbb{R}^n$ with $\vec{y}_k\in A$ for all k.
+
+            Therefore, $\lim_{k\to\infty}\norm{\vec{x} - \vec{y}_k} = \dist_A(\vec{x})$.
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
