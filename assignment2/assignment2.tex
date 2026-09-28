@@ -223,6 +223,17 @@ and only if every open ball of any positive radius intersects $A$.
     \Needspace{6\baselineskip}\item Show that $A\subseteq\overline{A}$.
 
     \begin{answer}
+        \begin{proof}
+            Let $x\in A\subseteq\mathbb{R}^n$.
+            \[
+                B_\varepsilon(x) = \{y\in \mathbb{R}^n:\ \norm{x - y} < \varepsilon\} \qquad \forall \varepsilon > 0
+            \]
+            By this deifiniton, we get that $x\in B_\varepsilon(x)$ for all $\varepsilon > 0$.
+
+            Therefore, $x\in B_\varepsilon(x) \cap A \neq \varnothing$. So $x\in \overline{A}$.
+
+            Therefore, $A\subseteq \overline{A}$.
+        \end{proof}
     \end{answer}
 
     \Needspace{7\baselineskip}\item Show that
@@ -230,6 +241,36 @@ and only if every open ball of any positive radius intersects $A$.
     \text{ for any open set }U\text{ containing }\mathbf{x}\}$.
 
     \begin{answer}
+        \begin{proof} Let arbitrary $x\in\mathbb{R}^n$.
+            We want to prove that $\forall \varepsilon > 0:\ B_\varepsilon(x)\cap A\neq\varnothing \iff U\cap A \neq \varnothing$ for all open sets $U$ containing $x$.
+
+            First, prove the forward direction:
+
+            Suppose $\forall \varepsilon > 0:\ B_\varepsilon(x)\cap A\neq\varnothing$.\\
+            Take an arbitrary open set $U\subseteq\mathbb{R}^n$ containing $x$. Since $U$ is open:
+            \[
+                \exists \delta > 0:\ B_\delta(x)\subseteq U
+            \]
+            By our assumption, we know that $B_\delta(x)\cap A\neq\varnothing$. So take arbitrary $y\in B_\delta(x)\cap A$. \\
+            So $y\in A$ and $y\in B_\delta(x)$. But since $B_\delta(x)\subseteq U$, we get that $y\in U$.\\
+            Therefore, $y\in U\cap A$, so $U\cap A \neq\varnothing$. Since $U$ is arbitrary, it holds for all open sets containing $x$.
+
+            Now, for the reverse direction:
+
+            Suppose $U\cap A \neq \varnothing$ for all open sets $U$ containing $x$.\\
+            Let arbitrary $\varepsilon > 0$ and take the open set $U = B_\varepsilon(x)$ containing $x$. Then, we have:
+            \[\forall \varepsilon > 0: B_\varepsilon(x) \cap A \neq \varnothing\]
+
+            Therefore, we have equivalence of the 2 statements. So:
+
+            \begin{align*}
+                &\overline{A}=\{\mathbf{x}\in\mathbb{R}^n:
+                B_\varepsilon(\mathbf{x})\cap A\neq\varnothing
+                \text{ for all }\varepsilon>0\} \iff \\
+                & \overline{A}=\{\mathbf{x}\in\mathbb{R}^n:U\cap A\neq\varnothing
+                \text{ for any open set }U\text{ containing }\mathbf{x}\}
+            \end{align*}
+        \end{proof}
     \end{answer}
 
     \Needspace{9\baselineskip}\item Show that $\overline{A}$ is closed.
