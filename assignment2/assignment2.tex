@@ -1,0 +1,260 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{physics}
+
+\definecolor{courseblue}{RGB}{0,0,255}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\renewcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
+
+\newcounter{problem}
+\newenvironment{problem}{%
+    \refstepcounter{problem}%
+    \Needspace{7\baselineskip}%
+    \par\vspace{0.7em}%
+    \noindent\textcolor{courseblue}{\rule{\textwidth}{0.4pt}}%
+    \par\vspace{0.5em}%
+    \begin{list}{}{%
+        \setlength{\leftmargin}{2.3em}%
+        \setlength{\labelwidth}{1.8em}%
+        \setlength{\labelsep}{0.5em}%
+        \setlength{\topsep}{0pt}%
+        \setlength{\partopsep}{0pt}%
+    }%
+    \item[{[\theproblem]}]
+}{%
+    \end{list}
+    \par\vspace{0.5em}
+}
+
+\newenvironment{parts}{%
+    \begin{enumerate}[label={[\alph*]},leftmargin=2.2em,itemsep=0.65em,topsep=0.65em]
+}{%
+    \end{enumerate}
+}
+
+% Type each solution between \begin{answer} and \end{answer}.
+\newenvironment{answer}{%
+    \Needspace{4\baselineskip}%
+    \par\vspace{0.35em}
+    \noindent\textbf{Answer:}\par
+}{%
+    \par\vspace{0.25em}
+}
+
+\begin{document}
+
+\begin{center}
+    {\color{courseblue}\Large\textbf{AMATH/PMATH 331: Applied Real Analysis}}
+    \hfill
+    {\color{courseblue}\Large\textbf{Fall 2026}}
+
+    \vspace{1.2em}
+    {\color{courseblue}\Large
+    Assignment 2 Submission; due Thursday, October 8, 2026}
+
+    \vspace{1.2em}
+    
+    \textbf{Name:} Vlad Paun
+
+    \textbf{Student number:} 21291453
+\end{center}
+
+\begin{problem}
+Let $(\mathbf{x}_k)_{k\in\mathbb{N}}$ be a sequence in $\mathbb{R}^n$.
+Write $\mathbf{x}_k=(x_{k1},\ldots,x_{kn})$, so that $(x_{kj})_{k\in\mathbb{N}}$
+is a sequence in $\mathbb{R}$ for each $j=1,\ldots,n$.
+
+\begin{parts}
+    \Needspace{8\baselineskip}\item Let $\mathbf{a}=(a_1,\ldots,a_n)\in\mathbb{R}^n$.
+    Prove that $\lim_{k\to\infty}\mathbf{x}_k=\mathbf{a}$ if and only if
+    $\lim_{k\to\infty}x_{kj}=a_j$ for each $j=1,\ldots,n$.
+    (\emph{Don't forget to prove both directions!})
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{8\baselineskip}\item Prove that $(\mathbf{x}_k)_{k\in\mathbb{N}}$
+    is a Cauchy sequence in $\mathbb{R}^n$ if and only if
+    $(x_{kj})_{k\in\mathbb{N}}$ is a Cauchy sequence in $\mathbb{R}$ for each
+    $j=1,\ldots,n$. (\emph{Don't forget to prove both directions!})
+
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+The two parts of this problem \emph{are} related.
+
+\begin{parts}
+    \Needspace{8\baselineskip}\item Let $E\subseteq\mathbb{R}$ be nonempty.
+    If $E$ is bounded below, so that $\inf E$ exists, prove that there exists
+    a sequence $(a_k)$ with $a_k\in E$ for all $k$, and
+    $\lim_{k\to\infty}a_k=\inf E$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{12\baselineskip}\item Let $A\subseteq\mathbb{R}^n$ be nonempty,
+    and $\mathbf{x}\in\mathbb{R}^n$. We define the \emph{distance} from $A$ to
+    $\mathbf{x}$ to be
+    \[
+        \operatorname{dist}_A(\mathbf{x})
+        =\inf\{\lVert\mathbf{x}-\mathbf{y}\rVert:\mathbf{y}\in A\}.
+    \]
+    (Note that $\operatorname{dist}_A(\mathbf{x})$ is well-defined and
+    $\operatorname{dist}_A(\mathbf{x})\geq 0$, because it is the infimum of a
+    nonempty set of nonnegative real numbers.) Prove that there exists a
+    sequence $(\mathbf{y}_k)$ in $\mathbb{R}^n$ with $\mathbf{y}_k\in A$ for all
+    $k$ and $\lim_{k\to\infty}\lVert\mathbf{x}-\mathbf{y}_k\rVert
+    =\operatorname{dist}_A(\mathbf{x})$.
+
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Let $A\subseteq\mathbb{R}^n$. We define the \emph{closure} of $A$, denoted by
+$\overline{A}$, to be the subset
+\[
+    \overline{A}=\{\mathbf{x}\in\mathbb{R}^n:
+    B_\varepsilon(\mathbf{x})\cap A\neq\varnothing
+    \text{ for all }\varepsilon>0\}.
+\]
+That is, a point $\mathbf{x}\in\mathbb{R}^n$ lies in the closure of $A$ if
+and only if every open ball of any positive radius intersects $A$.
+
+\begin{parts}
+    \Needspace{6\baselineskip}\item Show that $A\subseteq\overline{A}$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{7\baselineskip}\item Show that
+    $\overline{A}=\{\mathbf{x}\in\mathbb{R}^n:U\cap A\neq\varnothing
+    \text{ for any open set }U\text{ containing }\mathbf{x}\}$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{9\baselineskip}\item Show that $\overline{A}$ is closed.
+
+    \emph{Hint:} First show there exists $\varepsilon_0$ such that
+    $B_{\varepsilon_0}(\mathbf{x})\cap A=\varnothing$, and then show that
+    $B_{\varepsilon_0}(\mathbf{x})\cap\overline{A}=\varnothing$.
+    You will need to use part [b].
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{6\baselineskip}\item If $A$ is closed, show that $\overline{A}=A$.
+
+    \begin{answer}
+    \end{answer}
+\end{parts}
+(Combining parts [c] and [d] shows that $A$ is closed if and only if
+$\overline{A}=A$.)
+\end{problem}
+
+\begin{problem}
+Let $E\subseteq\mathbb{R}^n$ be nonempty.
+
+\begin{parts}
+    \Needspace{8\baselineskip}\item If $(\mathbf{x}_k)_{k\in\mathbb{N}}$ is a
+    sequence such that $\mathbf{x}_k\in E$ for all $k\in\mathbb{N}$, and
+    $\lim_{k\to\infty}\mathbf{x}_k=\mathbf{p}$, prove that
+    $\mathbf{p}\in\overline{E}$.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{8\baselineskip}\item Let $\mathbf{p}\in\overline{E}$.
+    Prove that there exists a sequence $(\mathbf{x}_k)_{k\in\mathbb{N}}$ such
+    that $\mathbf{x}_k\in E$ for all $k\in\mathbb{N}$, and
+    $\lim_{k\to\infty}\mathbf{x}_k=\mathbf{p}$.
+    \emph{Hint:} Consider $B_{\frac{1}{k}}(\mathbf{p})$.
+
+    \begin{answer}
+    \end{answer}
+\end{parts}
+Taken together, these two statements say that $\overline{E}$ is exactly the
+set of limits of convergent sequences whose elements all lie in $E$.
+\end{problem}
+
+\begin{problem}
+Let $(\mathbf{x}_m)_{m\in\mathbb{N}}$ be a sequence in $\mathbb{R}^n$.
+Define a new sequence $(\mathbf{s}_k)_{k\in\mathbb{N}}$ by
+\[
+    \mathbf{s}_k=\sum_{m=1}^k\mathbf{x}_m.
+\]
+If the sequence $(\mathbf{s}_k)$ converges, then we say that the \emph{series}
+$\sum_{m=1}^{\infty}\mathbf{x}_m$ \emph{converges}.
+If $\lim_{k\to\infty}\mathbf{s}_k=\mathbf{s}$, then we write
+$\sum_{m=1}^{\infty}\mathbf{x}_m=\mathbf{s}$.
+
+\begin{parts}
+    \Needspace{12\baselineskip}\item Prove that
+    $\sum_{m=1}^{\infty}\mathbf{x}_m$ converges iff: for all $\varepsilon>0$,
+    there exists $N\in\mathbb{N}$ such that
+    \[
+        \left\lVert\sum_{m=k+1}^{\ell}\mathbf{x}_m\right\rVert<\varepsilon
+    \]
+    for all $\ell\geq k\geq N$.
+
+    \emph{Hint:} A sequence in $\mathbb{R}^n$ converges if and only if it is Cauchy.
+
+    \begin{answer}
+    \end{answer}
+
+    \Needspace{13\baselineskip}\item Suppose that
+    $\sum_{m=1}^{\infty}\mathbf{x}_m$ converges. For any $N\in\mathbb{N}$,
+    prove that $\sum_{m=N}^{\infty}\mathbf{x}_m$ converges, and that
+    \[
+        \lim_{N\to\infty}\left(\sum_{m=N}^{\infty}\mathbf{x}_m\right)=0.
+    \]
+    \emph{Hint:} Consider the sequence
+    $(\tilde{\mathbf{s}}_\ell)_{\ell\geq N}$ given by
+    $\tilde{\mathbf{s}}_\ell=\sum_{m=N}^{\ell}\mathbf{x}_m$.
+
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\end{problem}
+
+\end{document}
