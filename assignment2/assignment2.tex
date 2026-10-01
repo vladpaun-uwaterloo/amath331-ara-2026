@@ -348,6 +348,20 @@ Let $E\subseteq\mathbb{R}^n$ be nonempty.
     $\mathbf{p}\in\overline{E}$.
 
     \begin{answer}
+        \begin{proof}
+            Take arbitrary $\varepsilon > 0$.
+            \[B_\varepsilon(\vec{p}) = \{x\in\mathbb{R}^n:\ \norm{\vec{p}-x} < \varepsilon\}\]
+            Since $\lim_{k\to\infty}x_k = \vec{p}$, then $\exists N\in \mathbb{N}:\ \forall k \geq N:\ \norm{x_k - \vec{p}} < \varepsilon$
+
+            That is, $\forall k \geq N:\ x_k\in B_\varepsilon(\vec{p})$. And since $x_k\in E$ for all $k$, we have that 
+            \[B_\varepsilon(\vec{p})\cap E \neq \varnothing\]
+            Since $\varepsilon$ was arbitrary, it holds that
+            \[\forall \varepsilon > 0:\ B_\varepsilon(\vec{p})\cap E \neq \varnothing\]
+
+            Which is exactly the condition for being a member of $\overline{E}$,
+
+            Therefore, $\vec{p}\in \overline{E}$. 
+        \end{proof}
     \end{answer}
 
     \Needspace{8\baselineskip}\item Let $\mathbf{p}\in\overline{E}$.
@@ -357,6 +371,26 @@ Let $E\subseteq\mathbb{R}^n$ be nonempty.
     \emph{Hint:} Consider $B_{\frac{1}{k}}(\mathbf{p})$.
 
     \begin{answer}
+        \begin{proof}
+            Since $\vec{p}\in\overline{E}$
+            \[\forall \varepsilon > 0:\ B_\varepsilon(\vec{p})\cap E \neq \varnothing\]
+
+            Consider the values $\varepsilon = \frac{1}{k}$ for all $k\in \mathbb{N}$. We know that for each of these values, there is at least one element both in $E$ and $B_\frac{1}{k}(\vec{p})$. Call that element $x_k$.
+
+            More formally:
+            \[\forall k\in\mathbb{N}:\ x_k\in B_\frac{1}{k}(\vec{p}) \wedge x_k\in E\]
+            This is a sequence $(x_k)_{k\in\mathbb{N}}$ with $x_k\in E$ for every $k\in\mathbb{N}$.
+            
+            Also, since $x_k\in B_\frac{1}{k}(\vec{p})$, we have that $\norm{x_k-\vec{p}} < \frac{1}{k}$ for all $k$.
+
+            Take arbitrary $\varepsilon > 0$. And choose $N$ such that  $N > \frac{1}{\varepsilon}$.
+            \begin{align*}
+                & \forall k\in\mathbb{N}:\ \norm{x_{k}-\vec{p}} < \frac{1}{k}\\
+                & \forall k,l\in\mathbb{N}:\ \norm{x_{k+l}-\vec{p}} < \frac{1}{k+l} < \frac{1}{k}\\
+                &\forall k \geq N:\ \norm{x_k-\vec{p}} < \frac{1}{k} \leq \frac{1}{N} < \varepsilon\\
+            \end{align*}
+            Since $\varepsilon$ was arbitrary, $\lim_{k\to\infty}x_k = \vec{p}$.
+        \end{proof}
     \end{answer}
 \end{parts}
 Taken together, these two statements say that $\overline{E}$ is exactly the
