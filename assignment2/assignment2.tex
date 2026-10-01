@@ -420,6 +420,15 @@ $\sum_{m=1}^{\infty}\mathbf{x}_m=\mathbf{s}$.
     \emph{Hint:} A sequence in $\mathbb{R}^n$ converges if and only if it is Cauchy.
 
     \begin{answer}
+        \begin{proof}
+            \begin{align*}
+                &\forall\varepsilon>0:\ \exists N\in\mathbb{N}:\ \forall l\geq k\geq N:\ \norm{\sum_{m=k+1}^{\ell}\mathbf{x}_m}<\varepsilon\\
+                \iff &\forall\varepsilon>0:\ \exists N\in\mathbb{N}:\ \forall l\geq k\geq N:\ \norm{\sum_{m=1}^{\ell}\mathbf{x}_m - \sum_{m=1}^{k}\mathbf{x}_m}<\varepsilon\\
+                \iff &\forall\varepsilon>0:\ \exists N\in\mathbb{N}:\ \forall l\geq k\geq N:\ \norm{s_\ell - s_k}<\varepsilon\\
+                \iff & (s_k)_{k\in\mathbb{N}} \text{ is Cauchy}\\
+                \iff & (s_k)_{k\in\mathbb{N}} \text{ converges.}
+            \end{align*}
+        \end{proof}
     \end{answer}
 
     \Needspace{13\baselineskip}\item Suppose that
@@ -433,6 +442,39 @@ $\sum_{m=1}^{\infty}\mathbf{x}_m=\mathbf{s}$.
     $\tilde{\mathbf{s}}_\ell=\sum_{m=N}^{\ell}\mathbf{x}_m$.
 
     \begin{answer}
+        \begin{proof}
+            Consider the sequence $(\tilde{s}_\ell)_{\ell\geq N}$ given by $\tilde{s}_\ell=\sum_{m=N}^{\ell}x_m$.\
+
+            Since we know $s_\ell$ converges, let $\lim_{\ell\to\infty}s_\ell =  \sum_{m=1}^{\infty}x_m = p$. 
+            
+            Also take arbitrary $\varepsilon > 0$.
+
+            \[\exists L\in\mathbb{N}:\ \forall \ell \geq L:\ \norm{s_\ell - p} < \varepsilon\]
+            Now,
+            \[
+                \forall \ell \geq L:\ \norm{\tilde{s}_\ell - (p - s_{N-1})} = \norm{s_\ell - p} < \varepsilon
+            \]
+            Therefore, $(\tilde{s}_\ell)_{l\geq N}$ converges to $p - s_{N-1}$.
+            \[\sum_{m=N}^{\infty}x_m = p - s_{N-1}\]
+            Let arbitrary $\varepsilon>0$. Since $s_k\to p$, there exists $K\in\mathbb{N}$ such that
+            \[
+            \forall k\geq K:\ \norm{s_k-p}<\varepsilon.
+            \]
+
+            Take $N\geq K+1$. Then $N-1\geq K$, and therefore
+            \begin{align*}
+                \norm{\sum_{m=N}^{\infty}x_m - 0} &=\norm{p-s_{N-1}} <\varepsilon.
+            \end{align*}
+    
+            Since $\varepsilon>0$ was arbitrary,
+            \[
+                \lim_{N\to\infty}
+                \left(
+                    \sum_{m=N}^{\infty}x_m
+                \right)
+                =0.
+            \]
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
