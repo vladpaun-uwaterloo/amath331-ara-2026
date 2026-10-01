@@ -281,11 +281,57 @@ and only if every open ball of any positive radius intersects $A$.
     You will need to use part [b].
 
     \begin{answer}
+        \begin{proof}
+            Let's look at $\overline{A}^c = \mathbb{R}^n \setminus \overline{A}$.
+            \[\forall x\in\overline{A}^c:\ \exists \varepsilon > 0:\ B_\varepsilon(x) \cap A = \varnothing\]
+            Take arbitrary $x\in\overline{A}^c$. Then $\varepsilon_0$ exists such that $B_{\varepsilon_0}(x) \cap A = \varnothing$.
+
+            Now assume for the sake of contradiction that there exists $y$ such that 
+            \[y\in B_{\varepsilon_0}(x)\cap\overline{A}\]
+            $B_{\varepsilon_0}(x)$ is an open set containing $y$ and $y\in\overline{A}$, so $B_{\varepsilon_0}(x)\cap A \neq \varnothing$, which is a contradiction.
+
+            Therefore, $B_{\varepsilon_0}(x)\cap\overline{A} = \varnothing$. Since $x$ is arbitrary, it holds that
+            \begin{align*}
+                &\forall x\in\overline{A}^c:\ \exists \varepsilon > 0:\ B_{\varepsilon}(x)\cap\overline{A} = \varnothing\\
+                &\forall x \in\overline{A}^c:\ \exists \varepsilon > 0:\ B_\varepsilon(x) \subseteq (\mathbb{R}^n\setminus\overline{A})\\
+                &\forall x \in\overline{A}^c:\ \exists \varepsilon > 0:\ B_\varepsilon(x) \subseteq \overline{A}^c\\
+                & \therefore \overline{A}^c \text{ is open}
+            \end{align*}
+            Therefore, $\overline{A}$ is closed.
+        \end{proof}
     \end{answer}
 
     \Needspace{6\baselineskip}\item If $A$ is closed, show that $\overline{A}=A$.
 
     \begin{answer}
+        \begin{proof}
+            Assume $A$ is closed. We know that $A\subseteq\overline{A}$, so we have to show $\overline{A}\subseteq A$.
+
+            Take arbitrary $y\in\overline{A}$.
+            \[\forall \varepsilon > 0:\ B_\varepsilon(y) \cap A \neq \varnothing\]
+
+            We know $A^c$ is open:
+            \[\forall x\in A^c:\ \exists \varepsilon > 0: B_\varepsilon(x) \subseteq A^c\]
+            Which is equivalent to:
+            \[\forall x\in A^c:\ \exists \varepsilon > 0: B_\varepsilon(x) \cap A = \varnothing\]
+
+            Now, assume for the sake of contradiction that $y\in A^c$. 
+            Since \(A^c\) is open and \(y\in A^c\), there exists \(\varepsilon_0>0\) such that
+            \[
+            B_{\varepsilon_0}(y)\subseteq A^c
+            \]
+            \[
+            B_{\varepsilon_0}(y)\cap A=\varnothing.
+            \]But since \(y\in\overline A\)
+            \[
+            B_{\varepsilon_0}(y)\cap A\neq\varnothing
+            \]a contradiction. Therefore,
+            \begin{align*}
+                &y\not\in A^c\\
+                &y\in A
+            \end{align*}
+            Since $y$ is arbitrary, it holds for all $y\in\overline{A}$. Therefore, $\overline{A}\subseteq A$.
+        \end{proof}
     \end{answer}
 \end{parts}
 (Combining parts [c] and [d] shows that $A$ is closed if and only if
