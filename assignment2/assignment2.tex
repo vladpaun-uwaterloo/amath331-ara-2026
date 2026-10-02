@@ -519,7 +519,16 @@ Let $(x_k)_{k\in\mathbb{N}}$ be a sequence in $\mathbb{R}^n$. Given $\vec{x}\in\
 \begin{problem}
 We know that a nonconvergent sequence can have subsequences which can converge to \emph{different} limits. Give an example of a sequence in $\mathbb{R}^n$ which has \emph{no convergent subsequences} at all. Justify your answer. \emph{Hint:} Recall the Bolzano-Weierstrass Theorem
     \begin{answer}
-        
+        Take the sequence $(x_k)_{k\in\mathbb{N}}$ in $\mathbb{R}^n$ with $x_k = (2^k,0,\dots,0)\in\mathbb{R}^n$.
+        \begin{proof}
+            Any subsequence of $(x_k)$ would be of the form $(x_{f(k)})$ with $f(k)$ strictly increasing.
+
+            But then $x_{f(k)} = (2^{f(k)},0,\dots,0)$. 
+
+            Let $x_{f(k)1} = 2^{f(k)}$. We can easily see $(x_{f(k)})$ is strictly increasing and unbounded, so it diverges to $\infty$ as $k\to\infty$. And on problem [1] of this assignment we've shown that a sequence converges iff all of it's components converge.
+
+            Therefore, $x_{f(k)}$ does not converge. And this is true for all subsequences of $(x_k)$.
+        \end{proof}
     \end{answer}
 \end{problem}
 
