@@ -25,7 +25,7 @@
 \renewcommand{\vec}[1]{\bm{#1}} % Converts all \vec{} commands to bold
 
 \DeclareMathOperator{\dist}{dist}
-
+\newtheorem*{lemma}{Lemma}
 \newcounter{problem}
 \newenvironment{problem}{%
     \refstepcounter{problem}%
@@ -480,9 +480,30 @@ $\sum_{m=1}^{\infty}\mathbf{x}_m=\mathbf{s}$.
 \end{problem}
 
 \begin{problem}
-Let $(x_k)_{k\in\mathbb{N}}$ be a sequence in $\mathbb{R}^n$. Given $x\in\mathbb{R}^n$, prove that $(x_k)$ has a \emph{subsequence} converging to $x$ if and only if, for all $\varepsilon > 0$ the open ball $B_\varepsilon(x)$ contains $x_k$ for infinitely many $k$.
+Let $(x_k)_{k\in\mathbb{N}}$ be a sequence in $\mathbb{R}^n$. Given $\vec{x}\in\mathbb{R}^n$, prove that $(x_k)$ has a \emph{subsequence} converging to $\vec{x}$ if and only if, for all $\varepsilon > 0$ the open ball $B_\varepsilon(\vec{x})$ contains $x_k$ for infinitely many $k$.
 \begin{answer}
-    
+    \begin{proof} Let $f:\mathbb{N}\to\mathbb{N}$ strictly increasing. And denote $(x_{f(k)})_{k\in\mathbb{N}}$ a subsequence of $(x_k)$.
+
+        Firstly, prove:
+        \[\Big(\lim_{k\to\infty}x_{f(k)} = \vec{x}\Big) \implies
+        \Big(\forall \varepsilon > 0:\ x_k\in B_\varepsilon(\vec{x})\text{ for infinitely many } k \Big)
+        \]
+        Assume $\lim_{k\to\infty}x_{f(k)} = \vec{x}$.
+        Let arbitrary $\varepsilon > 0$. Take $K\in\mathbb{N}$ such that $\forall f(k) \geq K:\ \norm{\vec{x} - x_{f(k)}} < \varepsilon$.
+        \[\forall k\geq K:\ x_{f(k)}\in B_\varepsilon(\vec{x})\]
+        We know from the archimedean property that there are an infinite amount of $k\geq K$, and since $f$ is strictly incresing, all $f(k)$ are distinct, so there is an infinite amount of $x_{f(k)}$ such that $k\geq K$.
+
+        Since $\varepsilon$ was arbitrary, it holds for all $\varepsilon > 0$.
+
+        Secondly, prove:
+        \[\Big(\forall \varepsilon > 0:\ x_k\in B_\varepsilon(\vec{x})\text{ for infinitely many } k \Big)
+        \implies \big(\lim_{k\to\infty}x_{f(k)} = \vec{x}\big)\]
+        Assume $\forall \varepsilon > 0:\ x_k\in B_\varepsilon(\vec{x})\text{ for infinitely many } k$. Take $\varepsilon = \frac{1}{k}$. By the assumption, every ball $B_\frac{1}{k}(\vec{x})$ must contain $x_j$ for an infinite amount of indexes $j$.
+
+        Now, for every $k\in\mathbb{N}$, choose $f(k)$ equal to one of these indexes $j$. We can always choose $f(k+1) > f(k)$, as there are an infinite amount of $j$'s for every choice. With this construction of $f(k)$, we have:
+        \[\forall k\in\mathbb{N}:\ \norm{x_{f(k)}-\vec{x}} < \frac{1}{k}\] 
+        As $\frac{1}{k}$ goes to $0$, we get that $\lim_{k\to\infty}x_{f(k)} = \vec{x}$
+    \end{proof}
 \end{answer}
 \end{problem}
 
