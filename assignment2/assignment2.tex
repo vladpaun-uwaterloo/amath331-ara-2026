@@ -537,13 +537,49 @@ Recall that a subset $K$ of $\mathbb{R}^n$ is called \emph{compact} iff every se
 
 Let $K_1, K_2,\dots, K_m$ be a finite collection of compact subsets of $\mathbb{R}^n$. Give two different proofs that the union $\bigcup_{j=1}^mK_j$ is compact:
     \begin{parts}
-        \Needspace{12\baselineskip}\item using the definition of compactness.
+        \Needspace{12\baselineskip}\item Using the definition of compactness.
         \begin{answer}
-            
+            \begin{proof}
+                Denote $K = \bigcup_{j=1}^mK_j$.
+
+                Take an arbitrary sequence $(x_k)_{k\in\mathbb{N}}$ in $K$. Every element of this sequence must be in at least one of $K_j$,
+                and since there are an infinite amount of elements in the sequence, there must exist at least one $K_j$ that has an infinite amount of elements of $(x_k)$.
+                
+                We can take exactly these elements to form a subsequence $(x_{f_j(k)})$ such that $x_{f_j(k)} \in K_j$.
+
+                Since $K_j$ is compact, we know by definition that there exists a convergent subsequence $(x_{f_j(h(k))})$ such that $\lim_{k\to\infty}x_{f_j(h(k))}\in K_j$.
+                
+                Therefore, $\lim_{k\to\infty}x_{f_j(h(k))}\in K$. So for an arbitrary sequence in $K$ we've found a subsequence that converges to a point in $K$. Therefore, $K$ is compact.
+            \end{proof}
         \end{answer}
-        \Needspace{12\baselineskip}\item using the Heine-Borel theorem
+        \Needspace{12\baselineskip}\item Using the Heine-Borel theorem
         \begin{answer}
-            
+            \begin{proof}
+                Denote $K = \bigcup_{j=1}^mK_j$.
+                
+                We have that $K_j$ is closed and bounded, for all $j\in[m]$.
+                Let $M_1,M_2,\dots,M_m$ be bounds for $K_1,K_2,\dots,K_m$ respectively. 
+                Then, 
+                \[M = \max_{j\in[m]}\{M_j\}\] 
+                is a bound for $K$. So $K$ is bounded.
+
+                Now we have to show that the union of multiple closed sets is also closed.
+                \[K_=\bigcup_{j=1}^mK_j =(\bigcap_{j=1}^mK_j^c)^c\]
+                We know that $K_j^c$ is open, and we have to show that $K^c = \bigcap_{j=1}^mK_j^c$ is also open.
+                \[\forall x\in K_j^c:\ \exists\varepsilon_j > 0:\ B_{\varepsilon_j}(x)\subseteq K_j^c\]
+                Take arbitrary $x\in K^c$ and choose $\varepsilon = \min_{j\in[m]}\{\varepsilon_j\}$.
+                \begin{align*}
+                    &\forall y\in B_\varepsilon(x):\ \norm{y - x} < \varepsilon & \forall j\in[m]:\ \varepsilon \leq \varepsilon_j\\
+                    &\forall j\in[m]:\ \forall y\in B_\varepsilon(x):\ \norm{y - x} < \varepsilon_j\\
+                    &\forall j\in[m]:\ \forall y\in B_\varepsilon(x):\ y\in B_{\varepsilon_j}(x)\\
+                    &\forall j\in[m]:\ B_\varepsilon(x)\subseteq B_{\varepsilon_j}(x) & B_{\varepsilon_j}(x)\subseteq K_j^c\\
+                    &\forall j\in[m]:\ B_\varepsilon(x)\subseteq K_j^c\\
+                    &B_\varepsilon(x)\subseteq \bigcap_{j=1}^mK_j^c = K^c
+                \end{align*}
+                Since $x$ was arbitrary, it holds for all $x\in K^c$, therefore $K^c$ is open, and $K is closed$.
+
+                Since $K$ is closed and bounded, it follows from the Heine-Borel Theorem that $K$ is compact. 
+            \end{proof}
         \end{answer}
     \end{parts}    
 \end{problem}
