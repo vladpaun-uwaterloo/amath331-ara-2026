@@ -591,11 +591,49 @@ Thus we can think of $\dist_E$ as a function from $\mathbb{R}^n $ to $\mathbb{R}
     \begin{parts}
         \Needspace{12\baselineskip}\item Prove that $\abs{\dist_E(x)-\dist_E(y)} \leq \norm{x-y}$ for all $x, y \in \mathbb{R}^n$.
         \begin{answer}
-            
+            \begin{proof}
+                Denote $D_E(x) = \{\norm{x - z}:\ z\in E\}$ for $x\in\mathbb{R}^n$. Also, $\dist_E(x) = \inf D_E(x)$.
+
+                Let arbitrary $z\in E$. 
+                
+                \begin{align*}
+                    &\norm{x - z}\in D_E(x) \implies \norm{x-z} \geq \dist_E(x)\\
+                    &\norm{y - z}\in D_E(y) \implies \norm{y-z} \geq \dist_E(y)
+                \end{align*}
+                From the triangle inequality:
+                \begin{align*}
+                    &\norm{x - z} =  \norm{(x-y) + (y-z)} \leq \norm{x-y} + \norm{y-z}\\
+                    & \dist_E(x) \leq \norm{x-y} + \norm{y-z}\\
+                    & \norm{y-z} \geq \dist_E(x) - \norm{x-y}
+                \end{align*}
+                Therefore, since this holds for every $z\in E$, $\dist_E(x) - \norm{x-y}$ is a lower bound of 
+                $D_E(y)$.
+                
+                So $\dist_E(y) \geq \dist_E(x) - \norm{x-y}$, since it is the infimum.
+                Therefore, 
+                \[\dist_E(x) - \dist_E(y) \leq \norm{x-y}\]
+                Since $x$ and $y$ arbitrary, we can swap them around to get
+                \[\dist_E(y) - \dist_E(x) \leq \norm{x-y}\]
+                Therefore, 
+                \[\abs{\dist_E(x) - \dist_E(y)} \leq \norm{x-y}\]
+            \end{proof}
         \end{answer}
         \Needspace{12\baselineskip}\item Prove that $\dist_E:\ \mathbb{R}^n \to \mathbb{R}$ is continuous on $\mathbb{R}^n$.
         \begin{answer}
-            
+            \begin{proof}
+                Let arbitrary $p\in\mathbb{R}^n$. Let arbitrary $\varepsilon > 0$. Take $\delta = \varepsilon$.
+                Let arbitrary $x\in B_\delta(p)$. We need to show that $\abs{\dist_E(x) - \dist_E(p)} < \varepsilon$.
+
+                From [a] we have that 
+                \[\abs{\dist_E(x) - \dist_E(p)} \leq \norm{x-p}\]
+                And from our choice of $x$ we have 
+                \[\norm{x - p} < \delta = \varepsilon\]
+                Therefore,
+                \[\abs{\dist_E(x) - \dist_E(p)} < \varepsilon\]
+                Since, $x$ and $\varepsilon$ were arbitrary, it holds that:
+                \[\forall\varepsilon > 0:\ \exists \delta > 0:\ \forall x\in B_\delta(p)\cap \mathbb{R}^n:\ \norm{\dist_E(x)-\dist_E(p)} < \varepsilon\]
+                Therefore, $\dist_E$ is continuous at $p$. Since $p$ is arbitrary, $\dist_E$ is continuous on $\mathbb{R}^n$.
+            \end{proof}
         \end{answer}
     \end{parts}      
 \end{problem}
