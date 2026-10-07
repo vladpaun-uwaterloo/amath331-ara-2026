@@ -651,47 +651,45 @@ Prove that $f$ is not continuous at $x$ for any $x \in \mathbb{R}$.
 
 \emph{Hint:} Find a way to use the sequential characterization of continuity.
 \begin{answer}
-    \begin{proof}
-        Let arbitrary $p\in \mathbb{R}\setminus\mathbb{Q}$. So $f(p) = 1$. 
-        We need to construct a sequence $(x_k)$ in $\mathbb{R}$ that converges to $p$, but the sequence $(f(x_k))$ does not converge to $f(p)$.
-
-        Using the floor function we can define the following sequence:
-        \[x_k = \frac{\lfloor10^kp\rfloor}{10^k}\]
-        Or, a description of the sequence can be "$x_k = $ The first $k$ digits of the decimal representation of $p$".
+    \begin{proof} We are going to use the density of the rationals and that of the irrationals to show this.
+        That is, between any two real numbers there always exists a rational number and irrational number. 
         
-        The floor function always produces integeres, so this is the division of 2 integers, therefore $x_k\in\mathbb{Q}$ for every $k\in\mathbb{N}$.
-
-        Now, to show that $(x_k)$ converges to $p$ we will use the following property of the floor function:
-        \begin{align*}
-            & \lfloor p \rfloor \leq p < \lfloor p \rfloor + 1\\
-            & \lfloor 10^kp \rfloor \leq 10^kp < \lfloor 10^kp \rfloor + 1\\
-            &\frac{\lfloor10^kp\rfloor}{10^k} \leq p < \frac{\lfloor10^kp\rfloor}{10^k} + \frac{1}{10^k}\\
-            &0  \leq p - \frac{\lfloor10^kp\rfloor}{10^k} < \frac{1}{10^k}
-        \end{align*}
-        So $\abs{x_k - p} < \frac{1}{10^k}$
-        Let arbitrary $\varepsilon > 0$. Take $N\in\mathbb{N}$ such that $N > log_{10}(\frac{1}{\varepsilon})$.
-        \[\forall k \geq N:\ \abs{x_k - p} < \frac{1}{10^k} \leq \frac{1}{10^N} < \frac{1}{10^{log_{10}(\frac{1}{\varepsilon})}} = \varepsilon\] 
-        Therefore, $(x_k)$ converges to $p$.
-
-        Since $x_k\in\mathbb{Q}$ for all $k$, $f(x_k) = 0$ for all $k$. So the sequence $f(x_k)$ converges to $0$.
-
-        Therefore, we have found a sequence that converges to $p$, but it s image over $f$ does not converge to the image of $p$. By the Sequential characterization of continuity, $f$ is not continuous at $p$.
-
-        Therefore, $f$ is not continuousat all irrational points.
-
-        Let arbitrary $p \in\mathbb{Q}$. So $f(p) = 0$.
-        Consider the sequence $(x_k)_{k\in\mathbb{N}}$ in $\mathbb{R}\setminus\mathbb{Q}$:
-        \[x_k = p + \frac{\sqrt{2}}{k}\]
-        Since $\sqrt{2}$ is irrational, $x_k$ is irrational for all $k$.
+        Let arbitrary $p\in \mathbb{R}$. For every $k\in\mathbb{N}$ choose $x_k$ such that:
+        \begin{itemize}
+            \item $x_k$ to be of opposite type from $p$. That is:
+            \begin{itemize}
+                \item if $p\in\mathbb{Q}$, take $x_k\in\mathbb{R}\setminus\mathbb{Q}$
+                \item if $p\in\mathbb{R}\setminus\mathbb{Q}$, take $x_k\in\mathbb{Q}$
+            \end{itemize}
+            \item $p - \frac{1}{k} \leq x_k \leq p + \frac{1}{k}$
+        \end{itemize}
+        We know that $\lim_{k\to\infty}\frac1k = 0$, so
+        \[\lim_{k\to\infty}x_k = p\]
+        Now, consider the two cases:
+        \begin{itemize}
+            \item $p\in\mathbb{Q} \implies$
+            \begin{align*}
+                & f(p) = 0\\
+                & x_k\in\mathbb{R}\setminus\mathbb{Q} & \forall k\in\mathbb{N}\\
+                & f(x_k) = 1 & \forall k\in\mathbb{N}\\
+                & \lim_{k\to\infty}f(x_k) = 1\\
+                \therefore & \lim_{k\to\infty}x_k = p \wedge \lim_{k\to\infty}f(x_k) \neq f(p)
+            \end{align*}
+            \item $p\in\mathbb{R}\setminus\mathbb{Q} \implies$
+            \begin{align*}
+                & f(p) = 1\\
+                & x_k\in\mathbb{R}\setminus\mathbb{Q} & \forall k\in\mathbb{N}\\
+                & f(x_k) = 0 & \forall k\in\mathbb{N}\\
+                & \lim_{k\to\infty}f(x_k) = 0\\
+                \therefore & \lim_{k\to\infty}x_k = p \wedge \lim_{k\to\infty}f(x_k) \neq f(p)
+            \end{align*}
+        \end{itemize}
+        So it holds for any $p$ that:
+        \[\lim_{k\to\infty}x_k = p \]
+        And
+        \[\lim_{k\to\infty}f(x_k) \neq f(p)\]
         
-        Let arbitrary $\varepsilon > 0$. Take $N\in\mathbb{N}$ such that $N > \frac{\sqrt{2}}{\varepsilon}$.
-        \[\forall k\geq N:\ x_k - p = \frac{\sqrt{2}}{k} \leq \frac{\sqrt{2}}{N} < \frac{\sqrt{2}}{\frac{\sqrt{2}}{\varepsilon}} = \varepsilon\]
-        So $x_k$ converges to $p$.
-        But since $x_k\in\mathbb{R}\setminus\mathbb{Q}$ for all $k$, we have that $f(x_k) = 1$ for all $k$. So $(f(x_k))$ converges to 1.
-        
-        Therefore, we have found a sequence that converges to $p$, but it s image over $f$ does not converge to the image of $p$. By the Sequential characterization of continuity, $f$ is not continuous at $p$.
-        
-        Therefore, $f$ is not continuousat all rational points.
+        By the Sequential characterization of continuity, $f$ is not continuous at $p$.
 
         Therefore, $f$ is not continuous at $x$ for any $x\in\mathbb{R}$.
     \end{proof}
