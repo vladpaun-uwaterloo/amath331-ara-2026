@@ -1,0 +1,248 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{physics}
+
+\definecolor{courseblue}{RGB}{0,0,255}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\renewcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
+
+\usepackage{bm}
+\renewcommand{\vec}[1]{\bm{#1}} % Converts all \vec{} commands to bold
+
+\DeclareMathOperator{\dist}{dist}
+\newtheorem*{lemma}{Lemma}
+\newcounter{problem}
+\newenvironment{problem}{%
+    \newpage
+    \refstepcounter{problem}%
+    \Needspace{7\baselineskip}%
+    \par\vspace{0.7em}%
+    \noindent\textcolor{courseblue}{\rule{\textwidth}{0.4pt}}%
+    \par\vspace{0.5em}%
+    \begin{list}{}{%
+        \setlength{\leftmargin}{2.3em}%
+        \setlength{\labelwidth}{1.8em}%
+        \setlength{\labelsep}{0.5em}%
+        \setlength{\topsep}{0pt}%
+        \setlength{\partopsep}{0pt}%
+    }%
+    \item[{[\theproblem]}]
+}{%
+    \end{list}
+    \par\vspace{0.5em}
+}
+
+\newenvironment{parts}{%
+    \begin{enumerate}[label={[\alph*]},leftmargin=2.2em,itemsep=0.65em,topsep=0.65em]
+}{%
+    \end{enumerate}
+}
+
+% Type each solution between \begin{answer} and \end{answer}.
+\newenvironment{answer}{%
+    \Needspace{4\baselineskip}%
+    \par\vspace{0.35em}
+    \noindent\textbf{Answer:}\par
+}{%
+    \par\vspace{0.25em}
+}
+
+\begin{document}
+
+\begin{center}
+    {\color{courseblue}\Large\textbf{AMATH/PMATH 331: Applied Real Analysis}}
+    \hfill
+    {\color{courseblue}\Large\textbf{Fall 2026}}
+
+    \vspace{1.2em}
+    {\color{courseblue}\Large
+    Assignment 3a Submission; due Tuesday, October 20, 2026}
+
+    \vspace{1.2em}
+    
+    \textbf{Name:} Vlad Paun
+
+    \textbf{Student number:} 21291453
+\end{center}
+
+\begin{problem}
+Let $f:A\subseteq\mathbb{R}^n\to\mathbb{R}^m$.
+\begin{parts}
+    \item Let $B\subseteq\mathbb{R}^m$. Show that
+    $f^{-1}(B^c)=A\cap(f^{-1}(B))^c$.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item Prove that $f$ is continuous on $A$ if and only if:
+    \begin{equation}
+        \begin{gathered}
+            \text{for every \emph{closed} subset }F\subseteq\mathbb{R}^m,\text{ then}\\
+            f^{-1}(F)=A\cap E\text{ for some \emph{closed} subset }E\subseteq\mathbb{R}^n.
+        \end{gathered}
+    \end{equation}
+    (Note that if the domain $A$ is all of $\mathbb{R}^n$, we can simplify
+    this to $f^{-1}(F)$ is closed in $\mathbb{R}^n$ for every $F$ closed
+    in $\mathbb{R}^m$.)
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item Show that $B=\{(x,y)\in\mathbb{R}^2:xy=1\}$ is a closed subset
+    of $\mathbb{R}^2$. \emph{Hint:} Consider $g(x,y)=xy$.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Let $f:A\subseteq\mathbb{R}^n\to\mathbb{R}^m$ be a map. For
+$\mathbf{x}\in A$, we have
+\[
+    f(\mathbf{x})=\bigl(f_1(\mathbf{x}),\ldots,f_m(\mathbf{x})\bigr),
+\]
+where $f_j:A\subseteq\mathbb{R}^n\to\mathbb{R}$ is the $j^{\text{th}}$
+\emph{component function} of $f$, for $1\leq j\leq m$.
+\begin{parts}
+    \item Let $\mathbf{x}_0\in A$. Prove using the sequential characterization
+    of continuity that $f$ is continuous at $\mathbf{x}_0$ if and only if
+    each $f_j$ is continuous at $\mathbf{x}_0$ for all $1\leq j\leq m$.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item Let $\pi_j:\mathbb{R}^m\to\mathbb{R}$ be the map
+    $\pi_j(y_1,\ldots,y_m)=y_j$, the projection onto the $j^{\text{th}}$
+    component. We proved in class directly using the definition of continuity
+    that $\pi_j$ is continuous on $\mathbb{R}^m$. Let
+    $\iota_j:\mathbb{R}\to\mathbb{R}^m$ be the map
+    $\iota_j(t)=(0,\ldots,0,t,0,\ldots,0)$ where the $t$ is in the
+    $j^{\text{th}}$ position. Prove directly using the definition of
+    continuity that $\iota_j$ is continuous on $\mathbb{R}$.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item Find a way to use the maps $\pi_j$, $\iota_j$ in [b] to give another
+    proof that $f$ is continuous on $A$ if and only if each $f_j$ is
+    continuous on $A$ for $1\leq j\leq m$.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Let $\mathbb{R}^{n^2}$ denote the space of $n\times n$ (square) matrices.
+Recall we can multiply two $n\times n$ matrices $A,B$ to obtain a matrix $AB$.
+\begin{parts}
+    \item Let $A,B\in\mathbb{R}^{n^2}$. Recall that the Euclidean inner
+    product on this space is
+    $\langle A,B\rangle=\sum_{i=1}^n\sum_{j=1}^n A_{ij}B_{ij}$.
+    Prove that $\langle A,B\rangle=\operatorname{tr}(A^T B)$, where $A^T$
+    is the transpose of $A$, and $\operatorname{tr}(C)$ is the trace of $C$.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item Consider the map $g:\mathbb{R}^{n^2}\to\mathbb{R}^{n^2}$ given by
+    $g(A)=A^T A$. Prove that $g$ is continuous on $\mathbb{R}^{n^2}$.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item Prove that the subset of $n\times n$ \emph{orthogonal} matrices
+    is a \emph{compact} subset of $\mathbb{R}^{n^2}$.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Let $A\subseteq\mathbb{R}^n$ be nonempty, and fix a point
+$\mathbf{x}\in\mathbb{R}^n$.
+\begin{parts}
+    \item If $A$ is \emph{compact}, show that there exists at least one point
+    $\mathbf{y}\in A$ such that
+    $\lVert\mathbf{y}-\mathbf{x}\rVert\geq\lVert\mathbf{a}-\mathbf{x}\rVert$
+    for all $\mathbf{a}\in A$. That is, $\mathbf{y}$ is a point in $A$ that
+    is \emph{furthest} from $\mathbf{x}$.
+
+    \emph{Hint:} Find a way to use the Extreme Value Theorem.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item Give an example to show that $\mathbf{y}$ is not unique in general.
+    (There are many possible answers.)
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item If $A$ is \emph{not compact}, there may not exist any such
+    $\mathbf{y}$. If $A$ is noncompact because it is unbounded, then this
+    is trivial to see, as there are points in $A$ arbitrarily far from the
+    origin, and hence arbitrarily far from any $\mathbf{x}$. More interesting
+    is if $A$ is noncompact because it is bounded but \emph{not closed}.
+    Give an example of such an $A$ and $\mathbf{x}$ such that there is no
+    farthest point in $A$ from $\mathbf{x}$. (There are many possible answers.)
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Let $f:\mathbb{R}^n\to\mathbb{R}$ be continuous on $\mathbb{R}^n$.
+Suppose that $f$ has the following property: for any $\varepsilon>0$,
+there exists $M>0$ such that if $\lVert\mathbf{x}\rVert>M$, then
+$|f(\mathbf{x})|<\varepsilon$. (We say that $f$ \emph{goes to zero at infinity}.)
+\begin{parts}
+    \item Show that $f$ is bounded on $\mathbb{R}^n$.
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item Suppose there exists some point $\mathbf{x}_0\in\mathbb{R}^n$
+    such that $f(\mathbf{x}_0)>0$. Prove that there exists a point
+    $\tilde{\mathbf{x}}$ such that $f(\mathbf{x})\leq f(\tilde{\mathbf{x}})$
+    for all $\mathbf{x}\in\mathbb{R}^n$. (That is, show that $f$
+    \emph{attains a global maximum} on $\mathbb{R}^n$.)
+
+    [Note that we cannot \emph{directly} use the Extreme Value Theorem
+    because $\mathbb{R}^n$ is not compact. Find a creative way to use it
+    nevertheless.]
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+
+    \item Show that the assumption that there exists
+    $\mathbf{x}_0\in\mathbb{R}^n$ with $f(\mathbf{x}_0)>0$ is necessary
+    for part [b]. That is, find an example where $f$ \emph{goes to zero
+    at infinity}, with $f(\mathbf{x})\leq0$ for all
+    $\mathbf{x}\in\mathbb{R}^n$, and such that $f$ does not attain a global
+    maximum on $\mathbb{R}^n$. [Take $n=1$ for simplicity.]
+    \begin{answer}
+        % Write your answer here.
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\end{document}
