@@ -25,6 +25,8 @@
 \renewcommand{\vec}[1]{\bm{#1}} % Converts all \vec{} commands to bold
 
 \DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\open}{open}
+\DeclareMathOperator{\closed}{closed}
 \newtheorem*{lemma}{Lemma}
 \newcounter{problem}
 \newenvironment{problem}{%
@@ -86,11 +88,22 @@ Let $f:A\subseteq\mathbb{R}^n\to\mathbb{R}^m$.
     \item Let $B\subseteq\mathbb{R}^m$. Show that
     $f^{-1}(B^c)=A\cap(f^{-1}(B))^c$.
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            Take arbitrary $x\in f^{-1}(B^c)$.
+            \begin{align*}
+                & \iff x\in A \wedge f(x)\in B^c \\
+                & \iff x\in A \wedge f(x)\not\in B\\
+                & \iff x\in A \wedge x\not\in f^{-1}(B)\\
+                & \iff x\in A \wedge x\in (f^{-1}(B))^c\\
+                & \iff x\in A \cap (f^{-1}(B))^c\\
+            \end{align*}
+            
+        \end{proof}
     \end{answer}
 
     \item Prove that $f$ is continuous on $A$ if and only if:
     \begin{equation}
+        \label{eq:closed-preimage}
         \begin{gathered}
             \text{for every \emph{closed} subset }F\subseteq\mathbb{R}^m,\text{ then}\\
             f^{-1}(F)=A\cap E\text{ for some \emph{closed} subset }E\subseteq\mathbb{R}^n.
@@ -100,13 +113,71 @@ Let $f:A\subseteq\mathbb{R}^n\to\mathbb{R}^m$.
     this to $f^{-1}(F)$ is closed in $\mathbb{R}^n$ for every $F$ closed
     in $\mathbb{R}^m$.)
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            Suppose \eqref{eq:closed-preimage} holds. We have to show $f$ is continuous on $A$.
+            
+            Let arbitrary $\open V\subseteq\mathbb{R}^m$. 
+            Then $V^c$ is closed. 
+            
+            By \eqref{eq:closed-preimage}, $f^{-1}(V^c) = A\cap E$ for some $\closed E\subseteq\mathbb{R}^n$.
+            
+            By [a], $f^{-1}(V^c) = A \cap (f^{-1}(V))^c$
+            \begin{align*}
+                & A \cap E = A \cap (f^{-1}(V))^c \\
+                & A \setminus E = A \setminus (f^{-1}(V))^c  & f^{-1}(V)\subseteq A\\
+                & A \cap E^c = f^{-1}(V) \\
+            \end{align*}
+
+            Since $E^c$ and $V$ are open, by the open-set characterization of continuity, we have $f$ continuous on $A$.
+            \vspace{1em}
+
+            Now, suppose $f$ continuous on $A$. We have to show \eqref{eq:closed-preimage}.
+
+            By the open-set characterization of continuity,
+            we can take arbitrary $\open V\subseteq\mathbb{R}^m$ and let $\open U\subseteq\mathbb{R}^n$ such that 
+            \[f^{-1}(V) = A\cap U\]
+
+            By [a], $f^{-1}(V^c) = A \cap (f^{-1}(V))^c$
+            \begin{align*}
+                & f^{-1}(V^c) = A \cap (A\cap U)^c \\
+                & f^{-1}(V^c) = A \cap (A^c\cup U^c) \\
+                & f^{-1}(V^c) = (A \cap A^c)\cup (A\cap U^c) \\
+                & f^{-1}(V^c) = (A\cap U^c) \\
+            \end{align*}
+            Since $U$ and $V$ are open, their complements are closed so we have shown \eqref{eq:closed-preimage} for arbitrary sets.
+        \end{proof}
     \end{answer}
 
     \item Show that $B=\{(x,y)\in\mathbb{R}^2:xy=1\}$ is a closed subset
     of $\mathbb{R}^2$. \emph{Hint:} Consider $g(x,y)=xy$.
     \begin{answer}
-        % Write your answer here.
+        \begin{lemma}
+            Let $g:\mathbb{R}^2\to\mathbb{R}$ such that $g(x,y) = xy$. $g$ is continuous on $\mathbb{R}^2$.
+
+            Let arbitrary $p = (p_1,p_2)\in\mathbb{R}^2$. Take a sequence $(s_k)_{k\in\mathbb{N}} = (x_k, y_k)_{k\in\mathbb{N}}$ that converges to $p$.
+
+            Therefore, $(x_k)\to p_1$ and $(y_k)\to p_2$
+            \begin{align*}
+                & g(x_k,y_k) = x_ky_k \\
+                & \lim_{k\to\infty} g(x_k,y_k) = \lim_{k\to\infty}x_ky_k \\
+                & \lim_{k\to\infty} g(x_k,y_k) = p_1p_2 \\
+                & \lim_{k\to\infty} g(x_k,y_k) = g(p) \\
+            \end{align*}
+            So $(g(s_k))$ converges to $g(p)$. Therefore, $g$ is continuous at $p$. So $g$ is continuous on $\mathbb{R}^2$.
+        \end{lemma}
+
+        \begin{lemma}
+            $\{1\}\subseteq\mathbb{R}$ is closed.
+            
+            Let arbitrary $x\in\mathbb{R}\setminus\{1\}$. Take $\varepsilon = \abs{x - 1} > 0$. 
+            Then, $B_\varepsilon(x)\subseteq\mathbb{R}\setminus\{1\}$.So $\mathbb{R}\setminus\{1\}$ is open. So $\{1\}\subseteq\mathbb{R}$ is closed.
+        \end{lemma}
+        
+        \begin{proof}
+            Let $g:\mathbb{R}^2\to\mathbb{R}$ such that $g(x,y) = xy$.
+            Since $g$ is continuous and $\{1\}$ is closed in $\mathbb{R}$, part [b] implies that 
+            $B = g^{-1}(\{1\})$ is closed in $\mathbb{R}^2$.
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
