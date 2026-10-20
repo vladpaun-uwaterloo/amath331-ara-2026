@@ -274,13 +274,35 @@ Recall we can multiply two $n\times n$ matrices $A,B$ to obtain a matrix $AB$.
     Prove that $\langle A,B\rangle=\operatorname{tr}(A^T B)$, where $A^T$
     is the transpose of $A$, and $\operatorname{tr}(C)$ is the trace of $C$.
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            \begin{align*}
+                & (A^TB)_{ii} = \sum_{j=1}^{n}A^T_{ij}B_{ji} = \sum_{j=1}^{n}A_{ji}B_{ji} \\
+                & tr(A^TB) = \sum_{i=1}^{n}(A^TB)_{ii}  = \sum_{i=1}^{n} \sum_{j=1}^{n}A_{ji}B_{ji} = \ip{A}{B}
+            \end{align*}
+        \end{proof}
     \end{answer}
 
     \item Consider the map $g:\mathbb{R}^{n^2}\to\mathbb{R}^{n^2}$ given by
     $g(A)=A^T A$. Prove that $g$ is continuous on $\mathbb{R}^{n^2}$.
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            Let arbitrary $M\in\mathbb{R}^{n^2}$. Let arbitrary sequence $(A_k)_{k\in\mathbb{N}}$ in $\mathbb{R}^{n^2}$ such that
+            \[\lim_{k\to\infty}A_k = M\]
+            Now, we've shown previously that for $\mathbb{R}^n$ convergence must happen component-wise, and it is trivial that this is also true in $\mathbb{R}^{n^2}$.
+            So:
+            \[\lim_{k\to\infty}A_k = M \iff \forall i,j\in[n]:\ \lim_{k\to\infty}(A_k)_{ij} = M_{ij}\]
+
+            Now consider $(g(A_k))_{ij}$:
+            \begin{align*}
+                (g(A_k))_{ij} = (A_k^TA_k)_{ij} & = \sum_{r=1}^{n}(A_k)_{ri}(A_k)_{rj}\\
+                \lim_{k\to\infty} (g(A_k))_{ij} & = \sum_{r=1}^{n}\lim_{k\to\infty}(A_k)_{ri}(A_k)_{rj} \\ 
+                & = \sum_{r=1}^{n}M_{ri}M_{rj}\\
+                & = (g(M))_{ij}
+            \end{align*}
+            And this holds $\forall i,j\in[n]$, so
+            \[\lim_{k\to\infty}g(A_k) = g(M)\]
+            Therefore, $g$ is continuous at $M$ and since $M$ was arbitrary, $g$ is continuous on $\mathbb{R}^{n^2}$.
+        \end{proof}
     \end{answer}
 
     \item Prove that the subset of $n\times n$ \emph{orthogonal} matrices
