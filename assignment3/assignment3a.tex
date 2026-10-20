@@ -195,7 +195,16 @@ where $f_j:A\subseteq\mathbb{R}^n\to\mathbb{R}$ is the $j^{\text{th}}$
     of continuity that $f$ is continuous at $\mathbf{x}_0$ if and only if
     each $f_j$ is continuous at $\mathbf{x}_0$ for all $1\leq j\leq m$.
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            \begin{align*}
+            &f \text{ is continuous at } x_0\\
+            &\iff \forall (x_k)_{k\in\mathbb{N}}\subseteq A:\ \lim_{k\to\infty}x_k = x_0 \implies \lim_{k\to\infty}f(x_k) = f(x_0)\\
+            &\iff \forall (x_k)_{k\in\mathbb{N}}\subseteq A:\ \lim_{k\to\infty}x_k = x_0 \implies\forall j\in[m]:\ \lim_{k\to\infty}f_j(x_k) = f_j(x_0)\\
+            &\iff\forall j\in[m]:\ \forall (x_k)_{k\in\mathbb{N}}\subseteq A:\ \lim_{k\to\infty}x_k = x_0 \implies \lim_{k\to\infty}f_j(x_k) = f_j(x_0)\\
+            &\iff\forall j\in[m]:\ f_j \text{ is continuous at }x_0\\
+            \end{align*}
+            We've shown the step going from line $2\to3$ of this in $A2$.
+        \end{proof}
     \end{answer}
 
     \item Let $\pi_j:\mathbb{R}^m\to\mathbb{R}$ be the map
@@ -207,14 +216,50 @@ where $f_j:A\subseteq\mathbb{R}^n\to\mathbb{R}$ is the $j^{\text{th}}$
     $j^{\text{th}}$ position. Prove directly using the definition of
     continuity that $\iota_j$ is continuous on $\mathbb{R}$.
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            Let arbitrary $p\in\mathbb{R}$. Let arbitrary $\varepsilon > 0$. Take $\delta = \varepsilon$.
+
+            We can see that
+            \[\norm{\iota_j(x) - \iota_j(p)} = \norm{(0,\dots,0,x-p,0,\dots,0)} = \abs{x-p}\]
+            Now, \[\forall x\in\mathbb{R}:\ \abs{x-p} < \delta = \varepsilon \implies \norm{\iota_j(x) - \iota_j(p)} = \abs{x-p} < \varepsilon\]
+            So $\iota_j$ is continuous on $\mathbb{R}$
+        \end{proof}
     \end{answer}
 
     \item Find a way to use the maps $\pi_j$, $\iota_j$ in [b] to give another
     proof that $f$ is continuous on $A$ if and only if each $f_j$ is
     continuous on $A$ for $1\leq j\leq m$.
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            We can easily see that
+            \begin{equation}
+                \label{eq:projection-decomposition}
+                \begin{gathered}
+                    \forall j\in[m]:\ (\pi_j\circ f)(x) = f_j(x)
+                \end{gathered}
+            \end{equation}
+            And that
+            \begin{equation}
+                \label{eq:component-composition}
+                \begin{gathered}
+                    f(x) = \sum_{j=1}^{m}(\iota_j\circ f_j)(x)
+                \end{gathered}
+            \end{equation}
+            We also know from class that 
+            \begin{itemize}
+                \item composition of continuous maps are continuous;
+                \item liniar combinations of continuous maps are continuous;
+            \end{itemize}
+
+            First, assume $f$ is continuous on $A$. We also have that $\pi_j$ is continuous on $\mathbb{R}^m$.
+            Therefore, $(\pi_j\circ f)$ is continuous on $A$. So, by \eqref{eq:projection-decomposition}, $\forall j\in[m]:\ f_j$ continuous on $A$.
+            
+            Secondly, assume $f_j$ is continuous on $A$ for all $j\in[m]$. $\iota_j$ is also continuous on $\mathbb{R}$,
+            so $(\iota_j\circ f_j)$ is continuous on $A$ for all $j\in[m]$.
+
+            $\sum_{j=1}^{m}(\iota_j\circ f_j)(x)$ is a liniar combination of continuous maps so it's also continuous. 
+            Therefore, by \eqref{eq:component-composition}, $f$ is continuous on $A$.
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
