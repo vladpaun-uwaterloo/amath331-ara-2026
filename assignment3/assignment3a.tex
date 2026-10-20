@@ -343,13 +343,33 @@ $\mathbf{x}\in\mathbb{R}^n$.
 
     \emph{Hint:} Find a way to use the Extreme Value Theorem.
     \begin{answer}
-        % Write your answer here.
+        Consider the map $f:A\subseteq\mathbb{R}^n\to\mathbb{R}$ given by 
+        \[f(a) = \norm{a-x} = \sqrt{\sum_{i=1}^{n}(a_i-x_i)^2}\]
+        We want to show that $f$ is continuous.
+
+        Let arbitrary $a\in A$, let arbitrary $\varepsilon\in \mathbb{R}$. Choose $\delta = \varepsilon$.
+        
+        Take arbitrary $b\in A$ such that $\norm{b-a} < \delta$.
+
+        From the triangle inequality, we get that
+        \[\abs{\norm{b-x} - \norm{a-x}} \leq \norm{b-a}\]
+        So
+        \[\abs{\norm{b-x} - \norm{a-x}} \leq \norm{b-a} < \delta = \varepsilon\]
+        \[\abs{\norm{b-x} - \norm{a-x}} < \varepsilon\]
+        \[\abs{f(b) - f(a)} < \varepsilon\]
+
+        So $f$ is continuous on $A$ and $A$ is compact. By the Extreme Value Theorem,
+        \[\exists y\in A:\ \forall a\in A:\  f(y) \geq f(a)\]
+        So
+        \[\exists y\in A:\ \forall a\in A:\  \norm{y-x} \geq \norm{a-x}\]
     \end{answer}
 
     \item Give an example to show that $\mathbf{y}$ is not unique in general.
     (There are many possible answers.)
     \begin{answer}
-        % Write your answer here.
+        Let $A = [-1,1]$ and $x = 0$. Then $y$ can be both $-1$ and $1$ as both achieve the max distance from $x$.
+
+        Also we should note that $A$ is compact because it is a closed interval in $\mathbb{R}$. 
     \end{answer}
 
     \item If $A$ is \emph{not compact}, there may not exist any such
@@ -360,7 +380,7 @@ $\mathbf{x}\in\mathbb{R}^n$.
     Give an example of such an $A$ and $\mathbf{x}$ such that there is no
     farthest point in $A$ from $\mathbf{x}$. (There are many possible answers.)
     \begin{answer}
-        % Write your answer here.
+        Let $A = (0,1)$ and $x = 0$. In this case, there is no $y$ that achieves the maximum distance away from $x$ as you can always get closer to $1$.
     \end{answer}
 \end{parts}
 \end{problem}
