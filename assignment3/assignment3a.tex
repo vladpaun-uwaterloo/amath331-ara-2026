@@ -308,7 +308,25 @@ Recall we can multiply two $n\times n$ matrices $A,B$ to obtain a matrix $AB$.
     \item Prove that the subset of $n\times n$ \emph{orthogonal} matrices
     is a \emph{compact} subset of $\mathbb{R}^{n^2}$.
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            Let \[\mathbb{E} = \{A\in\mathbb{R}^{n^2}:\ A^T = A^{-1}\}\]
+            Equivalently,
+            \[A\in\mathbb{E}\iff A^TA = I\]
+            Therefore,
+            \[\mathbb{E} = g^{-1}(\{I_{n}\})\]
+            Since $g$ is continuous and $\{I_n\}$ is a closed singleton set, from $1[b]$ we get that $E$ is also closed.
+
+            Now take arbitrary $A\in\mathbb{E}$.
+            \begin{align*}
+                & A^TA = I_n \\
+                & tr(A^TA) = tr(I_n) = n\\
+                & \ip{A}{A} = n\\
+                & \norm{A} = \sqrt{n} 
+            \end{align*}
+            So $\mathbb{E}$ is bounded by $\sqrt{n}$.
+
+            Therefore, $\mathbb{E}$ is closed and bounded, so it is compact.
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
