@@ -347,7 +347,7 @@ $\mathbf{x}\in\mathbb{R}^n$.
         \[f(a) = \norm{a-x} = \sqrt{\sum_{i=1}^{n}(a_i-x_i)^2}\]
         We want to show that $f$ is continuous.
 
-        Let arbitrary $a\in A$, let arbitrary $\varepsilon\in \mathbb{R}$. Choose $\delta = \varepsilon$.
+        Let arbitrary $a\in A$, let arbitrary $\varepsilon > 0$. Choose $\delta = \varepsilon$.
         
         Take arbitrary $b\in A$ such that $\norm{b-a} < \delta$.
 
@@ -393,7 +393,19 @@ $|f(\mathbf{x})|<\varepsilon$. (We say that $f$ \emph{goes to zero at infinity}.
 \begin{parts}
     \item Show that $f$ is bounded on $\mathbb{R}^n$.
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            Take $\varepsilon = 1$. There exists $M > 0$ such that 
+            \[\norm{x} > M \implies \abs{f(x)} < 1 \]
+            Now consider the closed ball $\overline{B_M(0)}$.
+            \[x\in \overline{B_M(0)} \iff \norm{x} \leq M \]
+            $f$ is continuous and $\overline{B_M(0)}$ is closed and bounded, so $f(\overline{B_M(0)})$ is also bounded.
+            
+            Let $K$ be the bound of $f(\overline{B_M(0)})$.
+
+            Now, if $\norm{x} \leq M$, then $f(x)$ bounded by $K$ and if $\norm{x} > M$, $f(x)$ bounded by $\varepsilon = 1$.
+            
+            Therefore, $f$ bounded by $\max K,1$.
+        \end{proof}
     \end{answer}
 
     \item Suppose there exists some point $\mathbf{x}_0\in\mathbb{R}^n$
@@ -406,7 +418,16 @@ $|f(\mathbf{x})|<\varepsilon$. (We say that $f$ \emph{goes to zero at infinity}.
     because $\mathbb{R}^n$ is not compact. Find a creative way to use it
     nevertheless.]
     \begin{answer}
-        % Write your answer here.
+        \begin{proof}
+            Take $\varepsilon = f(x_0) > 0$. There exists $M > 0$ such that
+            \[\norm{x} > M \implies \abs{f(x)} < f(x_0)\]
+
+            Therefore, for any $x$ ouside the closed ball of size $M$ centered at $0$, $f(x)$ is bounded by $f(x_0)$.
+
+            For all $x$ inside the closed ball, we can apply the EVT on that subset to show that there exists $\bar{x}$ for which $f(x) \leq f(\bar{x})$
+
+            Now simply take $\tilde{x}\in\{x_0, \bar{x}\}$ for which $f(\tilde{x}) = \max\{f(x_0),f(\bar{x})\}$.
+        \end{proof}
     \end{answer}
 
     \item Show that the assumption that there exists
@@ -416,7 +437,23 @@ $|f(\mathbf{x})|<\varepsilon$. (We say that $f$ \emph{goes to zero at infinity}.
     $\mathbf{x}\in\mathbb{R}^n$, and such that $f$ does not attain a global
     maximum on $\mathbb{R}^n$. [Take $n=1$ for simplicity.]
     \begin{answer}
-        % Write your answer here.
+        Let $f(x) = -e^{-x}$. $f(x)\leq 0$ for all $x$ and $\lim_{x\to\infty}f(x) = 0$.
+        
+        $f$ does not have a global maximum.
+        \begin{proof}
+            Assume for the sake of contradiction that $f$ has a global maximum. Then, 
+            \[\exists \tilde{x}:\ \forall x\in\mathbb{R}:\ f(\tilde{x}) \geq f(x)\]
+            However
+            \begin{align*}
+                &\tilde{x} + 1 > \tilde{x}\\
+                &-(\tilde{x} + 1) < -(\tilde{x})\\
+                &e^{-(\tilde{x} + 1)} < e^{-(\tilde{x})}\\
+                &-e^{-(\tilde{x} + 1)} > -e^{-(\tilde{x})}\\
+                &f(\tilde{x} + 1) > f(\tilde{x})\\
+            \end{align*}
+
+            Which is a contradiction.
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
