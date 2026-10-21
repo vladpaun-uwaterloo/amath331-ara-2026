@@ -437,7 +437,7 @@ $|f(\mathbf{x})|<\varepsilon$. (We say that $f$ \emph{goes to zero at infinity}.
     $\mathbf{x}\in\mathbb{R}^n$, and such that $f$ does not attain a global
     maximum on $\mathbb{R}^n$. [Take $n=1$ for simplicity.]
     \begin{answer}
-        Let $f(x) = -e^{-x}$. $f(x)\leq 0$ for all $x$ and $\lim_{x\to\infty}f(x) = 0$.
+        Let $f(x) = -e^{-x^2}$. $f(x)\leq 0$ for all $x$ and $\lim_{x\to\infty}f(x) = 0$.
         
         $f$ does not have a global maximum.
         \begin{proof}
@@ -446,9 +446,10 @@ $|f(\mathbf{x})|<\varepsilon$. (We say that $f$ \emph{goes to zero at infinity}.
             However
             \begin{align*}
                 &\tilde{x} + 1 > \tilde{x}\\
-                &-(\tilde{x} + 1) < -(\tilde{x})\\
-                &e^{-(\tilde{x} + 1)} < e^{-(\tilde{x})}\\
-                &-e^{-(\tilde{x} + 1)} > -e^{-(\tilde{x})}\\
+                &(\tilde{x} + 1)^2 > \tilde{x}^2\\
+                &-(\tilde{x} + 1)^2 < -(\tilde{x})^2\\
+                &e^{-(\tilde{x} + 1)^2} < e^{-(\tilde{x})^2}\\
+                &-e^{-(\tilde{x} + 1)^2} > -e^{-(\tilde{x})^2}\\
                 &f(\tilde{x} + 1) > f(\tilde{x})\\
             \end{align*}
 
