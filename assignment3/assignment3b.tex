@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{physics}
+
+\definecolor{courseblue}{RGB}{0,0,255}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\renewcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
+
+\usepackage{bm}
+\renewcommand{\vec}[1]{\bm{#1}} % Converts all \vec{} commands to bold
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\open}{open}
+\DeclareMathOperator{\closed}{closed}
+\newtheorem*{lemma}{Lemma}
+\newcounter{problem}
+\newenvironment{problem}{%
+    \newpage
+    \refstepcounter{problem}%
+    \Needspace{7\baselineskip}%
+    \par\vspace{0.7em}%
+    \noindent\textcolor{courseblue}{\rule{\textwidth}{0.4pt}}%
+    \par\vspace{0.5em}%
+    \begin{list}{}{%
+        \setlength{\leftmargin}{2.3em}%
+        \setlength{\labelwidth}{1.8em}%
+        \setlength{\labelsep}{0.5em}%
+        \setlength{\topsep}{0pt}%
+        \setlength{\partopsep}{0pt}%
+    }%
+    \item[{[\theproblem]}]
+}{%
+    \end{list}
+    \par\vspace{0.5em}
+}
+
+\newenvironment{parts}{%
+    \begin{enumerate}[label={[\alph*]},leftmargin=2.2em,itemsep=0.65em,topsep=0.65em]
+}{%
+    \end{enumerate}
+}
+
+% Type each solution between \begin{answer} and \end{answer}.
+\newenvironment{answer}{%
+    \Needspace{4\baselineskip}%
+    \par\vspace{0.35em}
+    \noindent\textbf{Answer:}\par
+}{%
+    \par\vspace{0.25em}
+}
+
+\begin{document}
+
+\begin{center}
+    {\color{courseblue}\Large\textbf{AMATH/PMATH 331: Applied Real Analysis}}
+    \hfill
+    {\color{courseblue}\Large\textbf{Fall 2026}}
+
+    \vspace{1.2em}
+    {\color{courseblue}\Large
+    Assignment 3b Submission; due Tuesday, October 27, 2026}
+
+    \vspace{1.2em}
+    
+    \textbf{Name:} Vlad Paun
+
+    \textbf{Student number:} 21291453
+\end{center}
+
+\begin{problem}
+Let $p$ be a monic polynomial of odd degree $2k+1$. This means that
+\[
+    p(x)=\sum_{j=0}^{2k+1}c_jx^j
+\]
+with $c_j\in\mathbb{R}$ for $j\in\{0,1,\ldots,2k+1\}$ and $c_{2k+1}=1$.
+Let $M=\max_{0\leq j\leq 2k+1}|c_j|\geq1$.
+\begin{parts}
+    \item Show that $p(2M)>0$.
+
+    \emph{Hint:} You will need to use the fact that
+    $\sum_{j=0}^{2k}2^j=\frac{1-2^{2k+1}}{1-2}=2^{2k+1}-1$.
+    \begin{answer}
+
+    \end{answer}
+
+    \item Show that $p(-2M)<0$.
+    \begin{answer}
+
+    \end{answer}
+
+    \item Prove that there exists at least one point $x_o\in\mathbb{R}$
+    such that $p(x_o)=0$.
+    \begin{answer}
+
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Suppose that the surface of the Earth can be reasonably well-approximated
+ to be a sphere $S=\{\mathbf{x}\in\mathbb{R}^3:\lVert\mathbf{x}\rVert=R\}$
+for some $R>0$. It is intuitively clear, and not hard to prove, that $S$
+is \emph{path-connected}. You do not have to show this.
+
+Let $T:S\to\mathbb{R}$ be the temperature function on the surface of the
+Earth. That is, $T(\mathbf{x})$ is the temperature at the point
+$\mathbf{x}\in S$. Assume that $T$ is a \emph{continuous} function. Show
+that there must exist at least one point $\mathbf{p}$ on the surface of
+the Earth which is at exactly the same temperature at the \emph{antipodal}
+point $-\mathbf{p}$. That is, prove that there exists $\mathbf{p}\in S$
+such that $T(\mathbf{p})=T(-\mathbf{p})$.
+
+\emph{Hint:} Consider the function $f:S\to\mathbb{R}$ given by
+$f(\mathbf{x})=T(\mathbf{x})-T(-\mathbf{x})$.
+\begin{answer}
+
+\end{answer}
+\end{problem}
+
+\begin{problem}
+Let $f:(0,\infty)\to\mathbb{R}$ be given by $f(x)=\frac{1}{x}$.
+We proved in class that $f$ is continuous on $(0,\infty)$.
+\begin{parts}
+    \item Show that $f$ is \emph{not} uniformly continuous on $A=(0,1)$.
+    \begin{answer}
+
+    \end{answer}
+
+    \item Show that $f$ is uniformly continuous on $B=[1,\infty)$.
+    [Note that $B$ is \emph{not compact}, so you cannot use the theorem
+    from class. You need to do this directly.]
+    \begin{answer}
+
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Fix a subset $E\subseteq\mathbb{R}^n$. Let $f,g:E\to\mathbb{R}^m$.
+\begin{parts}
+    \item Suppose that $f$ and $g$ are both uniformly continuous on $E$.
+    Let $\lambda,\mu\in\mathbb{R}$. Show that $\lambda f+\mu g$ is also
+    uniformly continuous on $E$.
+
+    [This shows that the space of functions from $E$ to $\mathbb{R}^m$
+    which are uniformly continuous on $E$ is a linear subspace of the
+    vector space of all continuous functions from $E$ to $\mathbb{R}^m$.]
+    \begin{answer}
+
+    \end{answer}
+
+    \item Let $m=1$, so $fg:E\to\mathbb{R}$ is defined. Suppose that
+    $f$ and $g$ are both uniformly continuous on $E$, and that they are
+    both \emph{bounded}. Show $fg$ is uniformly continuous on $E$.
+
+    [This shows that the space of \emph{bounded} uniformly continuous
+    functions from $E$ to $\mathbb{R}$ is closed under multiplication.
+    In the language of abstract algebra, it is a \emph{subring} of the
+    ring of continuous functions from $E$ to $\mathbb{R}$.]
+    \begin{answer}
+
+    \end{answer}
+
+    \item Show that the assumption that $f,g$ are bounded is necessary
+    for part [b]. That is, find examples of
+    $f,g:E\subseteq\mathbb{R}^n\to\mathbb{R}$ which are uniformly
+    continuous on $E$, and such that at least one of $f,g$ is unbounded,
+    and such that $fg$ is not uniformly continuous on $E$.
+    [Take $n=1$ for simplicity.]
+    \begin{answer}
+
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Suppose that $f:\mathbb{R}^n\to\mathbb{R}$ is continuous on
+$\mathbb{R}^n$ and that $f$ \emph{goes to zero at infinity} in the
+sense of problem [5] from Assignment \#3a. Prove that $f$ is uniformly
+continuous on $\mathbb{R}^n$.
+\begin{answer}
+
+\end{answer}
+\end{problem}
+
+\end{document}
