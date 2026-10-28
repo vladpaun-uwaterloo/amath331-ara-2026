@@ -186,14 +186,40 @@ We proved in class that $f$ is continuous on $(0,\infty)$.
 \begin{parts}
     \item Show that $f$ is \emph{not} uniformly continuous on $A=(0,1)$.
     \begin{answer}
+        We have to show that:
+        \[\exists\varepsilon > 0:\ \forall \delta > 0: \exists x,y\in A:\ \norm{x-y} < \delta \wedge \norm{f(x) - f(y)} \geq \varepsilon\]
 
+        \begin{proof}
+            Let $\varepsilon\in(0,1)$. Let arbitrary $\delta > 0$.
+
+            Let $x = \frac1n$ and $y=\frac{1}{n+1}$ for some $n \geq 2 \in\mathbb{N}$. (which are both in $A$)
+
+            Choose $n \geq 2$ suffieciently large such that $\frac{1}{n(n+1)} < \delta$.
+
+            Then, 
+            \[\abs{x - y} = \abs{\frac{1}{n(n+1)}} = \frac{1}{n(n+1)} < \delta\]
+
+            But also 
+            \[\abs{f(x) - f(y)} = \abs{n - (n+1)} = 1 > \varepsilon\]
+
+            So $f$ is not uniformly continuous on A.
+        \end{proof}
     \end{answer}
 
     \item Show that $f$ is uniformly continuous on $B=[1,\infty)$.
     [Note that $B$ is \emph{not compact}, so you cannot use the theorem
     from class. You need to do this directly.]
     \begin{answer}
+        We have to show that:
+        \[\forall\varepsilon > 0:\ \exists \delta > 0: \forall x,y\in B:\ \norm{x-y} < \delta \to \norm{f(x) - f(y)} < \varepsilon\]
+        \begin{proof}
+            Let arbitrary $\varepsilon > 0$. Let $\delta = \varepsilon$.
 
+            take arbitrary $x,y\in B$ such that $\abs{x-y} < \delta$.
+            \[\abs{f(x) - f(y)} = \abs{\frac{y-x}{xy}} = \frac{\abs{y-x}}{xy}\]
+            since $x,y\in B$, $xy \geq 1$ so $\frac{\abs{y-x}}{xy} \leq \abs{y-x}$. Thereofre:
+            \[\abs{f(x) - f(y)} \leq \abs{y-x} < \delta = \varepsilon\]
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
