@@ -318,7 +318,41 @@ $\mathbb{R}^n$ and that $f$ \emph{goes to zero at infinity} in the
 sense of problem [5] from Assignment \#3a. Prove that $f$ is uniformly
 continuous on $\mathbb{R}^n$.
 \begin{answer}
+\begin{proof}
+    Since $f$ goes to zero at infinity, we have that:
+    \[\forall \varepsilon>0:\ \exists M > 0:\ \norm{x} > M \to \abs{f(x)} < \frac\varepsilon2\]
 
+    let arbitrary $\varepsilon > 0$.
+
+    Consider the closed ball $\overline{B_{M+1}(0)}$. 
+    \[x\in \overline{B_{M+1}(0)} \iff \norm{x} \leq M+1 \]
+    Since $\overline{B_{M+1}(0)}$ is compact and f is continuous on $\overline{B_{M+1}(0)}\subseteq\mathbb{R}^n$, 
+    we have that $f$ is uniformly continuous on $\overline{B_{M+1}(0)}$.
+    Therefore, there exists $\delta_0$ such that 
+    \[x,y\in \overline{B_{M+1}(0)}, \norm{x-y} < \delta_0 \to \abs{f(x)-f(y)} < \varepsilon\]
+    Now choose $\delta = \min(\delta_0, 1)$.
+
+    Take arbitrary $x,y\in \mathbb{R}^n$ such that $\norm{x-y} < \delta$.
+
+    if both $x,y$ are in $\overline{B_{M+1}(0)}$, we are done by compactness.
+    Otherwise, at least one of them is outside the closed ball. So without loss of generality, assume:
+    \[\norm{x} > M + 1\]
+    Now:
+    \begin{align*}
+        &\norm{x} - \norm{y} \leq \norm{x - y} < \delta \leq 1\\
+        & \norm{x} - \norm{y} < 1\\
+        & \norm{y} > \norm{x} - 1 > M + 1 - 1\\
+        & \norm{y} > M
+    \end{align*}
+
+    So both points are outside radius $M$. Therefore, 
+    \[\abs{f(x)} < \frac\varepsilon2 \qquad \abs{f(y)} < \frac\varepsilon2\]
+
+    So 
+    \begin{align*}
+        & \abs{f(x) - f(y)} \leq \abs{f(x)} + \abs{f(y)} < \frac\varepsilon2 + \frac\varepsilon2 = \varepsilon
+    \end{align*}
+\end{proof}
 \end{answer}
 \end{problem}
 
