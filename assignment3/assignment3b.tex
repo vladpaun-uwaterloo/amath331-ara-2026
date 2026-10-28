@@ -158,7 +158,23 @@ such that $T(\mathbf{p})=T(-\mathbf{p})$.
 \emph{Hint:} Consider the function $f:S\to\mathbb{R}$ given by
 $f(\mathbf{x})=T(\mathbf{x})-T(-\mathbf{x})$.
 \begin{answer}
+\begin{proof}
+    Consider the function $f:S\to\mathbb{R}$ given by $f(\mathbf{x})=T(\mathbf{x})-T(-\mathbf{x})$. Since $T$ is continuous, $f$ is also continuous on $S$.
 
+    We have to show that there exists $p\in S$ such that $f(p) = 0$.
+
+    Take arbitrary $x\in S$. Since $S$ is path connected, there exists a path between $x$ and $-x$. 
+    That is, there exists continuous map:
+    \[\gamma : [0,1] \to S \quad \text{ such that }\quad \gamma(0) = -x \quad \gamma(1) = x\]
+    Now consider $h = f \circ \gamma : [0,1] \to\mathbb{R}$.
+    Since $f$ and $\gamma$ are continuous, so is $h$.
+    \[h(0) = f(\gamma(0)) = f(-x) = T(-x) - T(x) = -f(x)\]
+    \[h(1) = f(\gamma(1)) = f(x)\]
+    If $f(x) = 0$, we are done. Otherwise, $-f(x) < 0 < f(x)$. So by the Intermediate Value Theorem,
+    \[\exists \rho\in(0,1): h(\rho) = 0\]
+    Therefore, $f(\gamma(\rho)) = 0$. So let $p = \gamma(\rho)\in S$.
+    \[f(p) = 0\]
+\end{proof}
 \end{answer}
 \end{problem}
 
