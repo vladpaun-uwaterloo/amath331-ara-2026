@@ -95,18 +95,48 @@ Let $M=\max_{0\leq j\leq 2k+1}|c_j|\geq1$.
     \emph{Hint:} You will need to use the fact that
     $\sum_{j=0}^{2k}2^j=\frac{1-2^{2k+1}}{1-2}=2^{2k+1}-1$.
     \begin{answer}
+        \[p(2M) = (2M)^{2k+1} + \sum_{j=0}^{2k}c_j(2M)^j\]
+        Now, let's bound the sum term:
+        \[|\sum_{j=0}^{2k}c_j(2M)^j| \leq \sum_{j=0}^{2k}|c_j|(2M)^j\]
+        Since $(2M)^j > 0$ because $M \geq 1$.
 
+        But also we have that $|c_j| \leq M$ for all $j$. So 
+        \[ |\sum_{j=0}^{2k}c_j(2M)^j| \leq \sum_{j=0}^{2k}2^jM^{j+1}\]
+        Now since $M \geq 1$ and $j \leq 2k$, we have $M^{j+1} \leq M^{2k+1}$. so
+        \[ |\sum_{j=0}^{2k}c_j(2M)^j| \leq \sum_{j=0}^{2k}2^jM^{2k+1} = M^{2k+1}(\sum_{j=0}^{2k}2^j)\]
+        \[ |\sum_{j=0}^{2k}c_j(2M)^j| \leq M^{2k+1} (2^{2k+1}-1)\]
+        \[ |\sum_{j=0}^{2k}c_j(2M)^j| \leq (2M)^{2k+1} - M^{2k+1}\]
+        Since $M \geq 1$, $M^{2k+1} \geq 1$:
+        \[ |\sum_{j=0}^{2k}c_j(2M)^j| < (2M)^{2k+1}\]
+        Therefore, 
+        \[p(2M) = (2M)^{2k+1} + \sum_{j=0}^{2k}c_j(2M)^j > (2M)^{2k+1} - (2M)^{2k+1}\]
+        \[p(2M) >  0\]
     \end{answer}
 
     \item Show that $p(-2M)<0$.
     \begin{answer}
-
+        \begin{align*}
+            p(-2M) &= (-2M)^{2k+1} + \sum_{j=0}^{2k}c_j(-2M)^j\\
+            &  = \sum_{j=0}^{2k}c_j(-2M)^j  - (2M)^{2k+1}
+        \end{align*}
+        Now, we can reuse the same bounds as above:
+        \[|\sum_{j=0}^{2k}c_j(-2M)^j | \leq \sum_{j = 0}^{2k}|c_j|(2M)^j < (2M)^{2k+1}\]
+        so
+        \begin{align*}
+            p(-2M) &= \sum_{j=0}^{2k}c_j(-2M)^j  - (2M)^{2k+1}\\
+            & < (2M)^{2k+1} - (2M)^{2k+1}\\
+            p(-2M) &< 0
+        \end{align*}
     \end{answer}
 
     \item Prove that there exists at least one point $x_o\in\mathbb{R}$
     such that $p(x_o)=0$.
     \begin{answer}
-
+        \begin{proof}
+            $p$ is a continuous map on $[-2M, 2M]$. Since $p(-2M) < 0 < p(2M)$,
+             by the Intermediate Value Theorem, there exists $x_0\in(-2M,2M)\subset\mathbb{R}$ such that
+             $p(x_0) = 0$.
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
