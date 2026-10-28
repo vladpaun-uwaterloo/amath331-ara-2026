@@ -235,7 +235,29 @@ Fix a subset $E\subseteq\mathbb{R}^n$. Let $f,g:E\to\mathbb{R}^m$.
     which are uniformly continuous on $E$ is a linear subspace of the
     vector space of all continuous functions from $E$ to $\mathbb{R}^m$.]
     \begin{answer}
+        \begin{proof}
+            Let aribtrary $\varepsilon > 0$. Let $\varepsilon' = \frac{\varepsilon}{\abs{\lambda} + \abs{\mu}}$.
+            
+            Let $\delta_f$ and $\delta_g$ needed for the definition of uniform continuity of $f$ and $g$
 
+            Let $\delta = \min{\delta_f, \delta_g}$
+
+            Take arbitrary $x,y\in E$ such that $\norm{x - y} < \delta$. 
+            Since $\delta$ is the minimum of $\delta_f$ and $\delta_g$:
+            \[\norm{x - y} < \delta_f \qquad \norm{x - y} < \delta_g\]
+            Therefore, by uniform continuity: 
+            \[\norm{f(x) - f(y)} < \varepsilon' \qquad \norm{g(x) - g(y)} < \varepsilon'\]
+
+            Let $h = \lambda f + \mu g$ for brevity.
+            \begin{align*}
+                \norm{h(x) - h(y)}& = \norm{\lambda f(x) + \mu g(x) - \lambda f(y) - \mu g(y)}\\
+                & = \norm{\lambda (f(x) - f(y)) + \mu (g(x) - g(y))}\\
+                & \leq \norm{\lambda (f(x) - f(y)) + \norm{\mu (g(x) - g(y))}} & \text{By }\Delta\\
+                & \leq \abs{\lambda}\norm{f(x) - f(y)} + \abs{\mu}\norm{g(x) - g(y)}\\ 
+                & < \abs{\lambda} \varepsilon' + \abs{\mu} \varepsilon' = \varepsilon' (\abs{\lambda} + \abs{\mu}) = \varepsilon\\
+            \end{align*}
+            So $h$ is uniformly continuous on $E$.
+        \end{proof}
     \end{answer}
 
     \item Let $m=1$, so $fg:E\to\mathbb{R}$ is defined. Suppose that
@@ -247,7 +269,32 @@ Fix a subset $E\subseteq\mathbb{R}^n$. Let $f,g:E\to\mathbb{R}^m$.
     In the language of abstract algebra, it is a \emph{subring} of the
     ring of continuous functions from $E$ to $\mathbb{R}$.]
     \begin{answer}
+        \begin{proof}
+            Since $f,g$ are bounded, there exists $M_f,M_g\in\mathbb{R}$ such That
+            \[\abs{f(x)} \leq M_f, \quad \abs{g(x)} \leq M_g \qquad \forall x\in E\]
 
+            Let arbitrary $\varepsilon > 0$ Let $\varepsilon_f = \frac{\varepsilon}{2M_f}$ and $\varepsilon_g = \frac{\varepsilon}{2M_g}$.
+
+            Let $\delta_f$ and $\delta_g$ needed for the definition of uniform continuity of $f$ and $g$
+            
+            Let $\delta = \min{\delta_f, \delta_g}$
+
+            Take arbitrary $x,y\in E$ such that $\norm{x - y} < \delta$. 
+            Since $\delta$ is the minimum of $\delta_f$ and $\delta_g$:
+            \[\norm{x - y} < \delta_f \qquad \norm{x - y} < \delta_g\]
+            Therefore, by uniform continuity: 
+            \[\norm{f(x) - f(y)} < \varepsilon_f \qquad \norm{g(x) - g(y)} < \varepsilon_g\]
+
+            \begin{align*}
+                \abs{f(x)g(x) - f(y)g(y)} & = \abs{f(x)g(x) - f(x)g(y) + f(x)g(y) - f(y)g(y)}\\
+                & = \abs{f(x)(g(x) - g(y)) + g(y)(f(x) - f(y))}\\
+                & \leq \abs{f(x)(g(x) - g(y))} + \abs{g(y)(f(x) - f(y))} & \text{By }\Delta\\
+                & \leq \abs{f(x)}\abs{g(x)-g(y)} + \abs{g(y)}\abs{f(x)-f(y)}\\
+                & \leq M_f\abs{g(x)-g(y)} + M_g\abs{f(x)-f(y)}\\
+                & < M_f \varepsilon_f + M_g\varepsilon_g\\
+                & < \frac\varepsilon2 + \frac\varepsilon2 = \varepsilon
+            \end{align*}
+        \end{proof}
     \end{answer}
 
     \item Show that the assumption that $f,g$ are bounded is necessary
@@ -257,7 +304,10 @@ Fix a subset $E\subseteq\mathbb{R}^n$. Let $f,g:E\to\mathbb{R}^m$.
     and such that $fg$ is not uniformly continuous on $E$.
     [Take $n=1$ for simplicity.]
     \begin{answer}
+        Let $f,g: \mathbb{R} \to \mathbb{R}$ given by $f(x) = g(x) = x$.
 
+        Both are uniformly continuous on $\mathbb{R}$ and both are unbounded.
+        However, $(fg)(x) = x^2$ is not uniformly continuous on $\mathbb{R}$ as we have shown in class.
     \end{answer}
 \end{parts}
 \end{problem}
