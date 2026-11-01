@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{needspace}
+\usepackage{physics}
+
+\definecolor{courseblue}{RGB}{0,0,255}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.35em}
+\setlength{\headheight}{14pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\renewcommand{\ip}[2]{\left\langle #1, #2 \right\rangle}
+
+\usepackage{bm}
+\renewcommand{\vec}[1]{\bm{#1}} % Converts all \vec{} commands to bold
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\open}{open}
+\DeclareMathOperator{\closed}{closed}
+\newtheorem*{lemma}{Lemma}
+\newcounter{problem}
+\newenvironment{problem}{%
+    \newpage
+    \refstepcounter{problem}%
+    \Needspace{7\baselineskip}%
+    \par\vspace{0.7em}%
+    \noindent\textcolor{courseblue}{\rule{\textwidth}{0.4pt}}%
+    \par\vspace{0.5em}%
+    \begin{list}{}{%
+        \setlength{\leftmargin}{2.3em}%
+        \setlength{\labelwidth}{1.8em}%
+        \setlength{\labelsep}{0.5em}%
+        \setlength{\topsep}{0pt}%
+        \setlength{\partopsep}{0pt}%
+    }%
+    \item[{[\theproblem]}]
+}{%
+    \end{list}
+    \par\vspace{0.5em}
+}
+
+\newenvironment{parts}{%
+    \begin{enumerate}[label={[\alph*]},leftmargin=2.2em,itemsep=0.65em,topsep=0.65em]
+}{%
+    \end{enumerate}
+}
+
+% Type each solution between \begin{answer} and \end{answer}.
+\newenvironment{answer}{%
+    \Needspace{4\baselineskip}%
+    \par\vspace{0.35em}
+    \noindent\textbf{Answer:}\par
+}{%
+    \par\vspace{0.25em}
+}
+
+\begin{document}
+
+\begin{center}
+    {\color{courseblue}\Large\textbf{AMATH/PMATH 331: Applied Real Analysis}}
+    \hfill
+    {\color{courseblue}\Large\textbf{Fall 2026}}
+
+    \vspace{1.2em}
+    {\color{courseblue}\Large
+    Assignment 4 Submission; due Tuesday, November 10, 2026}
+
+    \vspace{1.2em}
+    
+    \textbf{Name:} Vlad Paun
+
+    \textbf{Student number:} 21291453
+\end{center}
+
+\begin{problem}
+Let $A\subseteq\mathbb{R}^n$ be a non-empty subset, and let
+$\operatorname{Map}(A,\mathbb{R}^m)$ be the space of maps from $A$ to $\mathbb{R}^m$.
+\begin{parts}
+    \item Let $(f_k)$ be a sequence in $\operatorname{Map}(A,\mathbb{R}^m)$
+    which converges uniformly to a \emph{bounded} function $f$, so
+    $f\in B(A,\mathbb{R}^m)$. Prove that the $f_k$ are \emph{eventually bounded}.
+    That is, prove that there exists $N\in\mathbb{N}$, such that $k\geq N$
+    implies $f_k\in B(A,\mathbb{R}^m)$.
+    \begin{answer}
+    \end{answer}
+
+    % The source uses R^n here and R^m for the limits; preserved as printed.
+    \item Suppose $(f_k)$ and $(g_k)$ are two sequences in
+    $\operatorname{Map}(A,\mathbb{R}^n)$ which converge uniformly to
+    \emph{bounded} functions $f,g\in B(A,\mathbb{R}^m)$. Prove that the
+    sequence $(\langle f_k,g_k\rangle)_{k\in\mathbb{N}}$ in
+    $\operatorname{Map}(A,\mathbb{R})$ converges uniformly to
+    $f\cdot g\in\operatorname{Map}(A,\mathbb{R})$, where
+    $\langle\cdot,\cdot\rangle$ is the dot product in $\mathbb{R}^m$.
+    \begin{answer}
+    \end{answer}
+
+    \item Show that the assumption of boundedness of the limits in part [b]
+    is essential as follows. Show that the sequence $(f_k)$ in
+    $M(\mathbb{R},\mathbb{R})$ given by $f_k(x)=x+\frac{1}{k}$ converges
+    uniformly on $\mathbb{R}$ to the unbounded function $f(x)=x$, but that
+    $f_k^2\in M(\mathbb{R},\mathbb{R})$ does not converge uniformly to $f^2$.
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Let $f\in\operatorname{Map}(\mathbb{R}^n,\mathbb{R}^m)$ be a map, and
+suppose that $f$ is \emph{continuous} at $\mathbf{x}_0\in\mathbb{R}^n$.
+
+Define a sequence $(f_k)$ in $\operatorname{Map}(\mathbb{R}^n,\mathbb{R}^m)$
+by $f_k(\mathbf{x})=f(\mathbf{x}_0+\frac{1}{k}\mathbf{x})$.
+Let $g\in\operatorname{Map}(\mathbb{R}^n,\mathbb{R}^m)$ be the
+\emph{constant map} $g(\mathbf{x})=f(\mathbf{x}_0)$ for all
+$\mathbf{x}\in\mathbb{R}^n$.
+
+Prove that, for any $R>0$, the sequence $(f_k)$ converges uniformly to $g$
+on the set $B_R(\mathbf{0})$.
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+For $k\in\mathbb{N}$, define $f_k:[-1,1]\to\mathbb{R}$ by
+$f_k(x)=(1-x^2)^k$.
+\begin{parts}
+    \item For any $\delta\in(0,1)$, prove that the sequence of functions
+    $(f_k)$ \emph{converge uniformly} on the subset
+    $[-1,-\delta]\cup[\delta,1]$ of $\mathbb{R}$.
+    \begin{answer}
+    \end{answer}
+
+    \item Prove that the sequence of functions $(f_k)$ \emph{does not
+    converge uniformly} on the subset $[-1,1]$ of $\mathbb{R}$.
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Let $A\subseteq\mathbb{R}^n$ be non-empty. Let $(f_k)$ be a sequence in
+$\operatorname{Map}(A,\mathbb{R}^m)$ which converges \emph{uniformly} to a
+limit $f\in\operatorname{Map}(A,\mathbb{R}^m)$. We proved in class that if
+every $f_k$ is continuous on $A$, then $f$ is also continuous on $A$.
+\begin{parts}
+    \item Adapt that proof to show that if every $f_k$ is \emph{uniformly}
+    continuous on $A$, then $f$ is also \emph{uniformly} continuous on $A$.
+    \begin{answer}
+    \end{answer}
+
+    \item Explain why we do not need to do any extra work if $A$ is compact.
+    That is, why does part [a] follow immediately if $A$ is compact?
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\begin{problem}
+COMING SOON
+\begin{answer}
+\end{answer}
+\end{problem}
+
+\end{document}
