@@ -92,6 +92,21 @@ $\operatorname{Map}(A,\mathbb{R}^m)$ be the space of maps from $A$ to $\mathbb{R
     That is, prove that there exists $N\in\mathbb{N}$, such that $k\geq N$
     implies $f_k\in B(A,\mathbb{R}^m)$.
     \begin{answer}
+        \begin{proof}
+            Since $f_k$ converges uniformly to $f$:
+            \[\forall \varepsilon > 0:\ \exists N\in\mathbb{N}:\ \forall k \geq N:\ \norm{f_k(x) - f(x)} < \varepsilon \quad \forall x\in A\]
+            So take $\varepsilon = 1$ and the respective $N$.
+            Also, since $f$ is bounded, take $M$ such that $\forall x\in A:\ \norm{f(x)} \leq M$
+
+            Now,
+            \begin{align*}
+                \norm{f_k(x)} & = \norm{f_k(x) - f(x) + f(x)} & \forall x\in A\\
+                & \leq \norm{f_k - f(x)} + \norm{f(x)} & \forall x\in A\\
+                & < \varepsilon + M = 1 + M & \forall k \geq N, \forall x\in A
+            \end{align*}
+
+            Therefore, $\forall k \geq N:\ f_k\in B(A,\mathbb{R}^m)$
+        \end{proof}
     \end{answer}
 
     % The source uses R^n here and R^m for the limits; preserved as printed.
@@ -103,6 +118,30 @@ $\operatorname{Map}(A,\mathbb{R}^m)$ be the space of maps from $A$ to $\mathbb{R
     $f\cdot g\in\operatorname{Map}(A,\mathbb{R})$, where
     $\langle\cdot,\cdot\rangle$ is the dot product in $\mathbb{R}^m$.
     \begin{answer}
+        \begin{proof}
+            We have to show
+            \[\forall \varepsilon > 0:\ \exists N\in\mathbb{N}:\ \forall k \geq N:\ \abs{\ip{f_k}{g_k}(x) - \ip{f}{g}(x)} < \varepsilon \quad \forall x\in A\]
+
+            By $1[a]$, $g_k$ is eventually bounded, so let $N_0$ such that $\forall k \geq N_0:\ \norm{g_k(x)} \leq M_0$.
+            
+            Let $M_f,M_g$ be the bounds of $f,g$.
+
+            Let arbitrary $\varepsilon > 0$. Let $\varepsilon' = \frac{\varepsilon}{M_0 + M_f}$. Let $N_f,N_g$ such that:
+            \[\forall k\geq N_f:\ \norm{f_k(x) - f(x)} < \varepsilon' \quad \forall x\in A\]
+            \[\forall k\geq N_g:\ \norm{g_k(x) - g(x)} < \varepsilon' \quad \forall x\in A\]
+
+            Take $N = \max(N_f,N_g,N_0)$ and take $k\geq N$.
+
+            Now,
+            \begin{align*}
+                \abs{\ip{f_k}{g_k}(x) - \ip{f}{g}(x)} & = \abs{\ip{f_k}{g_k}(x) - \ip{f}{g_k}(x) + \ip{f}{g_k}(x) - \ip{f}{g}(x)}\\
+                & = \abs{\ip{f_k - f}{g_k}(x) + \ip{f}{g_k - g}(x)}\\
+                & \leq \abs{\ip{f_k - f}{g_k}(x)} + \abs{\ip{f}{g_k - g}(x)}\\
+                & \leq \norm{(f_k(x) - f(x))}\norm{g_k(x)} + \norm{f(x)}\norm{(g_k(x) - g(x))}\\
+                & < \varepsilon'\norm{g_k(x)} + \varepsilon'\norm{f(x)}\\
+                & < \varepsilon'(M_0 + M_f) = \frac{\varepsilon}{M_0 + M_f}(M_0 + M_f) = \varepsilon
+            \end{align*}
+        \end{proof}
     \end{answer}
 
     \item Show that the assumption of boundedness of the limits in part [b]
@@ -111,6 +150,25 @@ $\operatorname{Map}(A,\mathbb{R}^m)$ be the space of maps from $A$ to $\mathbb{R
     uniformly on $\mathbb{R}$ to the unbounded function $f(x)=x$, but that
     $f_k^2\in M(\mathbb{R},\mathbb{R})$ does not converge uniformly to $f^2$.
     \begin{answer}
+        \begin{proof}
+            Let arbitrary $\varepsilon > 0$. Take $N > \frac{2}{\varepsilon}$
+            \begin{align*}
+                \abs{f_k(x) - f(x)} & = \abs{x + \frac1k - x} = \abs{\frac1k} \\
+                & \leq \frac1N < \frac\varepsilon2 < \varepsilon & \forall k\geq N,\forall x\in \mathbb{R}
+            \end{align*}
+            So $f_k$ converges uniformly to $f$.
+
+            Now, We have to show
+            \[\exists \varepsilon > 0:\ \forall N\in\mathbb{N}:\ \exists k \geq N:\ \exists x\in\mathbb{R}:\ \abs{f_k^2(x) - f^2(x)} \geq \varepsilon \]
+            
+            Take $\varepsilon = 1$. Let arbitrary $N\in\mathbb{N}$. Take $k = N$. Take $x = k$
+            
+            \begin{align*}
+                \abs{f_k^2(x) - f^2(x)} & = \abs{x^2 + \frac{2x}{k} + \frac{1}{k^2} - x^2} = \abs{\frac{2x}{k} + \frac{1}{k^2}}\\
+                & = \abs{2 + \frac{1}{N^2}} > 2 > 1 = \varepsilon
+            \end{align*}
+            So $f_k^2$ does not converge uniformly to $f^2$.
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
