@@ -279,6 +279,27 @@ every $f_k$ is continuous on $A$, then $f$ is also continuous on $A$.
     \item Adapt that proof to show that if every $f_k$ is \emph{uniformly}
     continuous on $A$, then $f$ is also \emph{uniformly} continuous on $A$.
     \begin{answer}
+        \begin{proof}
+            We need to show $f$ is uniformly continuous on $A$. 
+
+            Let arbitrary $\varepsilon > 0$.
+            We need to show:
+            \[\exists \delta > 0:\ \forall x,y\in A:\ \norm{x - y} < \delta \implies \norm{f(x) - f(y)} < \varepsilon\]
+            Since $(f_k)$ converges uniformly to $f$, there exists $N\in\mathbb{N}$ such that:
+            \[k \geq N\implies \norm{f_k(p) - f(p)} < \frac\varepsilon3 \quad \forall p\in A\]
+
+            Since $f_N$ is uniformly continuous on A, there exists $\delta > 0$ such that
+            \[x,y\in A \wedge\norm{x - y} < \delta  \implies \norm{f_N(x) - f_N(y)} < \frac\varepsilon3\]
+
+            Therefore, for all $k\geq N$ and $x,y\in A$ such that $\norm{x-y} < \delta$:
+            \begin{align*}
+                \norm{f(x) - f(y)} &= \norm{(f(x) - f_N(x)) + (f_N(x) - f_N(y)) + (f_N(y) - f(y))} \\
+                & \leq \norm{f(x) - f_N(x)} + \norm{f_N(x) - f_N(y)} + \norm{f_N(y) - f(y)} \\
+                & < \frac\varepsilon3 + \frac\varepsilon3 + \frac\varepsilon3
+                & < \varepsilon
+            \end{align*}
+            therefore, f is uniformly continuous on A.
+        \end{proof}
     \end{answer}
 
     \item Explain why we do not need to do any extra work if $A$ is compact.
