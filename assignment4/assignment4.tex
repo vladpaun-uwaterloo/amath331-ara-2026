@@ -220,11 +220,52 @@ $f_k(x)=(1-x^2)^k$.
     $(f_k)$ \emph{converge uniformly} on the subset
     $[-1,-\delta]\cup[\delta,1]$ of $\mathbb{R}$.
     \begin{answer}
+        \begin{proof}
+            Let $f:[-1,1]\to \mathbb{R}$ be the pointwise limit of $f_k$. That is:
+            \[f(x) = \begin{cases}
+                1 & \text{if }x = 0\\
+                0 & \text{else}
+            \end{cases}\]
+
+            Let arbitrary $\delta\in (0,1)$, $\varepsilon > 0$. Let $A = [-1, -\delta] \cup [\delta, 1]\subset \mathbb{R}$
+
+            We will show $f_k$ converges uniformly to $f$ on $A$
+
+            We have to show:
+            \[\exists N\in\mathbb{N}: k\geq N \implies \abs{f_k(x) - f(x)} < \varepsilon \quad \forall x\in A\]
+            Since $x\in A$, so $x\neq 0$:
+            \[\abs{f_k(x) - f(x)} = \abs{f_k(x) - 0} = \abs{f_k(x)} \]
+            Since $x\in A$, we have:
+            \begin{align*}
+                & 0 < \delta \leq \abs{x} \leq 1\\
+                & 0 < \delta^2 \leq x^2 \leq 1\\
+                & 0 \leq (1-x^2) \leq 1 - \delta^2 < 1\\
+                & 0 \leq (1-x^2)^k \leq (1-\delta^2)^k < 1 & \forall k\in\mathbb{N}\\
+                & \abs{f_k(x)} \leq (1-\delta^2)^k < 1 & \forall k \in\mathbb{N}\\
+            \end{align*}
+            So we want 
+            \[(1-\delta^2)^k < \varepsilon\]
+            Taking lograithms, we have:
+            \[k\ln(1-\delta^2) < \ln(\varepsilon)\]
+            \[k > \frac{\ln(\varepsilon)}{\ln(1-\delta^2)}\]
+            Therefore, take $N$ large enough such that $N > \frac{\ln(\varepsilon)}{\ln(1-\delta^2)}$.
+
+            Now, $k\geq N \implies \abs{f_k(x) - f(x)} < \varepsilon \quad \forall x\in A$. So $(f_k)$ converges uniformly to $f$ on $A$  
+        \end{proof}
     \end{answer}
 
     \item Prove that the sequence of functions $(f_k)$ \emph{does not
     converge uniformly} on the subset $[-1,1]$ of $\mathbb{R}$.
     \begin{answer}
+        \begin{proof}
+            We need to show that:
+            \[\exists \varepsilon > 0:\ \forall N\in\mathbb{N}:\ \exists k \geq N:\ \exists x\in [-1,1]:\ \abs{f_k(x) - f(x)} \geq \varepsilon\]
+
+            Take $k = N$, $\varepsilon = \frac12$, $x = \sqrt{1 - (\frac34)^\frac1k}$ and let arbitrary $N\in\mathbb{N}$.
+
+            $x\neq0$, so $f(x) = 0$.
+            \[\abs{f_k(x) - f(x)} = \frac34 > \frac12=\varepsilon\]
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
