@@ -185,6 +185,29 @@ $\mathbf{x}\in\mathbb{R}^n$.
 Prove that, for any $R>0$, the sequence $(f_k)$ converges uniformly to $g$
 on the set $B_R(\mathbf{0})$.
 \begin{answer}
+    \begin{proof}
+        We have to show:
+        \[\forall R > 0:\ \forall \varepsilon > 0:\ \exists N\in\mathbb{N}:\ \forall k \geq N:\ \norm{f_k(x) - g(x)} < \varepsilon \quad \forall x\in B_R(0)\]
+        Let arbitrary $R > 0$ and $\varepsilon > 0$.
+        \[
+            \norm{f_k(x) - g(x)} = \norm{f(x_0 + \frac1kx) - f(x_0)}
+        \]
+
+        Since $f$ is continuous at $x_0$, there exists $\delta$ such that 
+        \[\norm{y - x_0} < \delta \implies \norm{f(y) - f(x_0)} < \varepsilon \qquad \forall y\in\mathbb{R}^n\]
+        Now take $y = x_0 + \frac1kx$.
+        \[\norm{y - x_0} = \norm{\frac1kx} = \frac1k\norm{x}\]
+        So now we have
+        \[\frac1k\norm{x} < \delta \implies \norm{f_k(x) - g(x)} < \varepsilon \qquad \forall x\in\mathbb{R}^n\]
+        Now, if we restrict $x$ to $B_R(0)$, we have $\norm{x} < R$, so 
+        \[\frac1k\norm{x} < \frac Rk\]
+        Therefore, we need to choose $N$ such that 
+        \[\forall k \geq N:\ \frac Rk \leq \delta\]
+        So take $N = \frac R\delta$. Then, we have:
+        \[\forall k\geq N:\ \frac1k\norm{x} < \frac Rk \leq \delta \quad \forall x\in B_R(0)\]
+        And therefore:
+        \[\forall k\geq N:\ \norm{f_k(x) - g(x)} < \varepsilon \quad \forall x\in B_R(0)\]
+    \end{proof}
 \end{answer}
 \end{problem}
 
