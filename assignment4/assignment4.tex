@@ -109,9 +109,8 @@ $\operatorname{Map}(A,\mathbb{R}^m)$ be the space of maps from $A$ to $\mathbb{R
         \end{proof}
     \end{answer}
 
-    % The source uses R^n here and R^m for the limits; preserved as printed.
     \item Suppose $(f_k)$ and $(g_k)$ are two sequences in
-    $\operatorname{Map}(A,\mathbb{R}^n)$ which converge uniformly to
+    $\operatorname{Map}(A,\mathbb{R}^m)$ which converge uniformly to
     \emph{bounded} functions $f,g\in B(A,\mathbb{R}^m)$. Prove that the
     sequence $(\langle f_k,g_k\rangle)_{k\in\mathbb{N}}$ in
     $\operatorname{Map}(A,\mathbb{R})$ converges uniformly to
@@ -225,39 +224,121 @@ every $f_k$ is continuous on $A$, then $f$ is also continuous on $A$.
 \end{problem}
 
 \begin{problem}
-COMING SOON
+Let $a<b$. Recall the Weierstrass Approximation Theorem: if $f\in C[a,b]$,
+then there exists a sequence $(p_k)$ in $\mathcal{P}[a,b]$ that converges
+uniformly to $f$ on $[a,b]$.
+
+Suppose that we have proved this theorem for the particular case
+$[a,b]=[0,1]$. Show that the general case of any $[a,b]$ follows from that.
+
+\emph{Hint:} Consider the map $T:\mathbb{R}\to\mathbb{R}$ given by
+$T(x)=a+(b-a)x$.
 \begin{answer}
 \end{answer}
 \end{problem}
 
 \begin{problem}
-COMING SOON
+Let $f\in C[0,1]$. Suppose that $\int_0^1 x^n f(x)\,dx=0$ for all
+integers $n\geq 0$.
+\begin{parts}
+    \item Find a way to use the Weierstrass Approximation Theorem to show
+    that
+    \[\int_0^1 |f(x)|^2\,dx=0.\]
+
+    \emph{Hint:} Consider the integral of $f(f-p)$ for an appropriately
+    chosen $p\in\mathcal{P}[0,1]$.
+    \begin{answer}
+    \end{answer}
+
+    \item Explain why this means that $f(x)=0$ for all $x\in[0,1]$.
+
+    \emph{Hint:} Suppose that there exists some $a\in[0,1]$ where
+    $f(a)\neq 0$, and try to derive a contradiction using continuity of
+    $f$ and properties of integration.
+    \begin{answer}
+    \end{answer}
+\end{parts}
+\end{problem}
+
+\begin{problem}
+Suppose that $f:[0,1]\to\mathbb{R}$ is \emph{continuously differentiable}.
+This means that:
+\begin{itemize}
+    \item $f$ is differentiable at all points in $[0,1]$, where we define
+    differentiability at the end points using one-sided limits, \emph{and}
+    \item the derivative $f':[0,1]\to\mathbb{R}$ is continuous on $[0,1]$,
+    so $f'\in C[0,1]$.
+\end{itemize}
+Show that there exists a sequence of polynomials $(p_k)$ in
+$\mathcal{P}[0,1]$ such that $(p_k)$ converges uniformly to $f$ and the
+sequence $(p_k')$ of derivatives converges uniformly to $f'$.
+
+\emph{Hint:} Start with $f'$, and consider the fundamental theorem of calculus.
 \begin{answer}
 \end{answer}
 \end{problem}
 
 \begin{problem}
-COMING SOON
-\begin{answer}
-\end{answer}
+Let $a>0$ and $c\in\mathbb{R}$. Consider the map
+$T:\mathbb{R}\to\mathbb{R}$ given by $T(x)=ax^2+c$.
+\begin{parts}
+    \item Show that, depending on $a,c$, the map $T$ may have two, one,
+    or zero fixed points.
+    \begin{answer}
+    \end{answer}
+
+    \item Show that if there is only one fixed point, we cannot classify
+    it as attracting or repelling.
+    \begin{answer}
+    \end{answer}
+
+    \item Show that if there are two fixed points, one is always repelling,
+    and the behaviour of the other depends on whether $ac$ is greater or
+    less than $-\frac{3}{4}$, and we learn nothing if $ac=-\frac{3}{4}$.
+    \begin{answer}
+    \end{answer}
+\end{parts}
 \end{problem}
 
 \begin{problem}
-COMING SOON
-\begin{answer}
-\end{answer}
+Let $\lambda>0$. Consider the map $T:\mathbb{R}\to\mathbb{R}$ given by
+$T(x)=x+\frac{\lambda}{\pi}\sin(\pi x)$.
+\begin{parts}
+    \item Compute all of the fixed points of $T$. You should find that
+    there are infinitely many, and they are very simple to describe.
+    \begin{answer}
+    \end{answer}
+
+    \item Show that ``half'' of the fixed points are always \emph{repelling}.
+    \begin{answer}
+    \end{answer}
+
+    \item Find a condition on $\lambda$ which ensures that the other
+    ``half'' of the fixed points are \emph{attracting}, and find a different
+    condition on $\lambda$ which ensures that this other half is repelling.
+    \begin{answer}
+    \end{answer}
+
+    \item For what value of $\lambda$ do we know nothing about this other
+    half of the fixed points?
+    \begin{answer}
+    \end{answer}
+\end{parts}
 \end{problem}
 
 \begin{problem}
-COMING SOON
-\begin{answer}
-\end{answer}
-\end{problem}
+Let $\lambda>0$. Consider the map $T:\mathbb{R}\to\mathbb{R}$ given by
+$T(x)=x+\frac{\lambda}{2\pi}\sin^2(\pi x)$.
+\begin{parts}
+    \item Compute all of the fixed points of $T$. You should find that
+    there are infinitely many, and they are very simple to describe.
+    \begin{answer}
+    \end{answer}
 
-\begin{problem}
-COMING SOON
-\begin{answer}
-\end{answer}
+    \item What can you say qualitatively about the fixed points in this case?
+    \begin{answer}
+    \end{answer}
+\end{parts}
 \end{problem}
 
 \end{document}
