@@ -432,6 +432,27 @@ sequence $(p_k')$ of derivatives converges uniformly to $f'$.
 
 \emph{Hint:} Start with $f'$, and consider the fundamental theorem of calculus.
 \begin{answer}
+    \begin{proof}
+        Apply Weierstrass to $f'$ to get a sequence $(q_k)$ in $\mathcal{P}[0,1]$ that converges uniformly to $f'$.
+        Construct the polynomials $p_k$ given by:
+        \[p_k(x) = f(0) + \int_{0}^{x}q_k(t)dt\]
+        Integrating a polynomial gives another polynomial, so $p_k$ is a polynomial.
+        Also,
+        \[p'_k(x) = q_k(x)\]
+        So $(p'_k(x))$ converges uniformly to $f'$ on $[0,1]$.
+
+        By the fundamental theorem of calculus:
+        \[f(x) = f(0) + \int_{0}^{x}f'(t)dt\]
+        so
+        \begin{align*}
+            \abs{f(x) - p_k(x)} & = \abs{f(0) + \int_{0}^{x}f'(t)dt - f(0) - \int_{0}^{x}q_k(t)dt}\\
+            & = \abs{\int_{0}^{x}f'(t) - q_k(t)dt}\\
+            & \leq \int_{0}^{x}\abs{f'(t) - q_k(t)}dt\\
+            & \leq x \norm{f'(t) - q_k(t)}_\infty \quad \forall t\in[0,1]\\
+            & \leq \norm{f'(t) - q_k(t)}_\infty \quad \forall t\in[0,1]
+        \end{align*}
+        Since $q_k$ converges uniformly to $f'$, the right hand side above converges to $0$, so therefore $p_k$ converges uniformly to $f$.
+    \end{proof}
 \end{answer}
 \end{problem}
 
