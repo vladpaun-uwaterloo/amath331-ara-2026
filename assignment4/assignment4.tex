@@ -327,6 +327,27 @@ $[a,b]=[0,1]$. Show that the general case of any $[a,b]$ follows from that.
 \emph{Hint:} Consider the map $T:\mathbb{R}\to\mathbb{R}$ given by
 $T(x)=a+(b-a)x$.
 \begin{answer}
+    \begin{proof}
+        We can see that $T(x)$ is continuous and strictly increasing, since $b > a$. Also, $T(0) = a$, $T(1) = b$. So T maps $[0,1]$ onto $[a,b]$.
+
+        Define $g: [0,1]\to\mathbb{R}$ given by $g(x) = (f\circ T)(x) = f(T(x)) = f(a + (b - a)x)$.
+        Now, applying the Weierstrass Approximation Theorem on $g$, we get a sequence $(q_k)$ in $P[0,1]$ that converges uniformly to $g$ on $[0,1]$.
+
+        Now take the inverse of $T$, $T^{-1}: [a,b]\to [0,1]$:
+        \[T^{-1}(x) = \frac{x - a}{b - a}\]
+        And define a new sequence $(p_k)$ on $[a,b]$, such that $p_k(x) = (q_k\circ T^{-1})(x) = q_k(T^{-1}(x))$.
+        
+        Each $p_k$ is still a polynomial as it is the composition of a polynomial with an affine map.
+
+        Taking the limit of this sequence of polynomials we get:
+        \begin{align*}
+            \lim_{k\to\infty}p_k(x) &= \lim_{k\to\infty} q_k(T^{-1}(x))\\
+            & = g(T^{-1}(x))\\
+            & = f(a + (b-a)T^{-1}(x)) \\
+            & = f(a + (b-a)\frac{x-a}{b-a}) \\
+            & = f(x)
+        \end{align*}
+    \end{proof}
 \end{answer}
 \end{problem}
 
