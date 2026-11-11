@@ -569,10 +569,25 @@ $T(x)=x+\frac{\lambda}{2\pi}\sin^2(\pi x)$.
     \item Compute all of the fixed points of $T$. You should find that
     there are infinitely many, and they are very simple to describe.
     \begin{answer}
+        \begin{align*}
+            & T(x) = x\\
+            & x + \frac{\lambda}{2\pi}\sin^2(\pi x) = x\\
+            & \frac{\lambda}{2\pi}\sin^2(\pi x) = 0 \\
+            & \sin^2(\pi x) = 0 \\
+            & \pi x = k\pi & \forall k\in\mathbb{Z}\\
+            & x^* = k & \forall k\in\mathbb{Z}
+        \end{align*}
     \end{answer}
 
     \item What can you say qualitatively about the fixed points in this case?
     \begin{answer}
+        \begin{align*}
+            T'(x) &= 1 + \lambda \sin(\pi x)\cos(\pi x)\\
+            T'(x^*) &= 1 + \lambda \sin(\pi k) \cos(\pi k) & \forall k\in\mathbb{Z}\\
+            & = 1 + \lambda \cdot 0 \cdot (-1)^k\\
+            & = 1
+        \end{align*}
+        So it is inconclusive for all fixed points.
     \end{answer}
 \end{parts}
 \end{problem}
