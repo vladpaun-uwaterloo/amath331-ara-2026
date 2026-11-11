@@ -517,21 +517,47 @@ $T(x)=x+\frac{\lambda}{\pi}\sin(\pi x)$.
     \item Compute all of the fixed points of $T$. You should find that
     there are infinitely many, and they are very simple to describe.
     \begin{answer}
+        \begin{align*}
+            & T(x) = x\\
+            & x + \frac{\lambda}{\pi}\sin(\pi x) = x\\
+            & \frac{\lambda}{\pi}\sin(\pi x) = 0 \\
+            & \sin(\pi x) = 0 \\
+            & \pi x = k\pi & \forall k\in\mathbb{Z}\\
+            & x^* = k & \forall k\in\mathbb{Z}
+        \end{align*}
     \end{answer}
 
     \item Show that ``half'' of the fixed points are always \emph{repelling}.
     \begin{answer}
+        \begin{align*}
+            &T'(x) = 1 + \lambda \cos(\pi x)\\
+            &T'(x^*) = 1 + \lambda \cos(\pi k) & \forall k\in\mathbb{Z}\\
+        \end{align*}
+        For all even $k$, $\cos(\pi k) = 1$, so $T'(x^*) = 1 + \lambda > 1$ so they are repelling points 
     \end{answer}
+
 
     \item Find a condition on $\lambda$ which ensures that the other
     ``half'' of the fixed points are \emph{attracting}, and find a different
     condition on $\lambda$ which ensures that this other half is repelling.
     \begin{answer}
+        For odd $k$, $\cos(\pi k) = -1$, so $T'(x^*) = 1 - \lambda$.
+        \begin{itemize}
+            \item if $\lambda < 2$:
+            \[ - 1 < T'(x^*) < 1\]
+            So they are attracting points
+            \item if $\lambda > 2$:
+            \[T'(x^*) < -1\]
+            So they are repelling points
+        \end{itemize}
     \end{answer}
 
     \item For what value of $\lambda$ do we know nothing about this other
     half of the fixed points?
     \begin{answer}
+        For $\lambda = 2$ we get 
+        \[T'(x^*) = -1\]
+        which is inconclusive
     \end{answer}
 \end{parts}
 \end{problem}
