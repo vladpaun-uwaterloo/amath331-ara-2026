@@ -359,6 +359,41 @@ integers $n\geq 0$.
     \emph{Hint:} Consider the integral of $f(f-p)$ for an appropriately
     chosen $p\in\mathcal{P}[0,1]$.
     \begin{answer}
+        \begin{proof}
+            Applying the Weierstrass Approximation Theorem on $f$, we get a sequence $(p_k)$ in $\mathcal{P}[0,1]$ that converges uniformly to $f$ on $[0,1]$
+            
+            Now, consider the integral:
+            \[\int_{0}^{1}f(x)(f(x)-p_k(x))dx = \int_{0}^{1}f(x)^2 - f(x)p_k(x)dx = \int_{0}^{1}f(x)^2dx - \int_{0}^{1}f(x)p_k(x)dx\]
+
+            Now, lets look at $\int_{0}^{1}f(x)p(x)dx$ for any arbitrary polynomial $p$.
+
+            $p$ can be expaneded into $p = \sum_{i = 0}^{n}a_ix^i$. Therefore:
+            \begin{align*}
+                \int_{0}^{1}f(x)p(x)dx &= \int_{0}^{1}f(x)(\sum_{i = 0}^{n}a_ix^i)dx\\
+                & = \sum_{i = 0}^{n}a_i\int_{0}^{1}x^if(x)dx\\
+                & = \sum_{i = 0}^{n}a_i\cdot 0\\
+                & = 0
+            \end{align*}
+            so
+            \[\int_{0}^{1}f(x)(f(x)-p_k(x))dx = \int_{0}^{1}f(x)^2dx\]
+            Now denote $I = \int_{0}^{1}f(x)^2dx$ and $I_k = \int_{0}^{1}f(x)(f(x)-p_k(x))dx$.
+
+            We've shown that $I = I_k$ for all $k$.
+
+            Since $f$ is continuous on a compact set, it is bounded by $M$.
+            Since $(p_k)$ converges uniformly to $f$, so for every $\varepsilon > 0$, there exists $N$ such that:
+            \[k\geq N \implies \abs{f(x) - p_k(x)} < \varepsilon \quad \forall x\in[0,1]\]
+            \begin{align*}
+                \abs{I_k} &= \abs{\int_{0}^{1}f(x)(f(x)-p_k(x))dx} \\
+                & \leq \int_{0}^{1}\abs{f(x)}\abs{f(x) - p_k(x)}dx \\
+                & \leq \int_{0}^{1} M\varepsilon dx & \forall k \geq N\\
+                & \leq M\varepsilon & \forall k \geq N
+            \end{align*}
+            So $I_k$ converges to $0$. But $I_k$ is constant for all $k$, and therefore it must be equal to $0$ for all $k$.
+
+            Therefore, $I = \int_{0}^{1}f(x)^2dx = 0$. So 
+            \[\int_{0}^{1}\abs{f(x)}^2 = 0\]
+        \end{proof}
     \end{answer}
 
     \item Explain why this means that $f(x)=0$ for all $x\in[0,1]$.
@@ -367,6 +402,17 @@ integers $n\geq 0$.
     $f(a)\neq 0$, and try to derive a contradiction using continuity of
     $f$ and properties of integration.
     \begin{answer}
+        \begin{proof}
+            Suppose there exists some $a\in[0,1]$ where $f(a)\neq 0$. 
+            Since $f$ is continuous, there exists $\varepsilon > 0$ such that for all $x\in B_\varepsilon(a)$, $f(x)\neq 0$. 
+            
+            So, $\int_{a-\varepsilon}^{a+\varepsilon}f(x)^2dx > 0$.
+            On the rest of the interval, since $f(x)^2 \geq 0$, we have $\int_{0}^{a-\varepsilon}f(x)^2dx \geq 0$ and $\int_{a+\varepsilon}^{1}f(x)^2dx \geq 0$
+
+            Therefore, on the whole interval:
+            \[\int_{0}^{1}f^2(x)dx = \int_{0}^{a-\varepsilon}f(x)^2dx + \int_{a-\varepsilon}^{a+\varepsilon}f(x)^2dx + \int_{a+\varepsilon}^{1}f(x)^2dx > 0\] 
+            Which contradicts our result from above
+        \end{proof}
     \end{answer}
 \end{parts}
 \end{problem}
