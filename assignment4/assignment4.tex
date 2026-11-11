@@ -339,14 +339,11 @@ $T(x)=a+(b-a)x$.
         
         Each $p_k$ is still a polynomial as it is the composition of a polynomial with an affine map.
 
-        Taking the limit of this sequence of polynomials we get:
-        \begin{align*}
-            \lim_{k\to\infty}p_k(x) &= \lim_{k\to\infty} q_k(T^{-1}(x))\\
-            & = g(T^{-1}(x))\\
-            & = f(a + (b-a)T^{-1}(x)) \\
-            & = f(a + (b-a)\frac{x-a}{b-a}) \\
-            & = f(x)
-        \end{align*}
+        Since $q_k$ converges uniformly on $[0,1]$ to $g$, for every $\varepsilon > 0$, exxists $N \in\mathbb{N}$ such that:
+        \[k \geq N \implies \abs{q_k(x) - g(x)} < \varepsilon \quad \forall x\in[0,1]\]
+        So we get:
+        \[g\geq N \implies \abs{p_k(x) - f(x)} = \abs{q_k(T^{-1}(x)) - g(T^{-1}(x))} < \varepsilon  \quad \forall x\in[a,b]\]
+        So therefore, $(p_k)$ converges uniformly to $f$ on $[a,b]$ 
     \end{proof}
 \end{answer}
 \end{problem}
